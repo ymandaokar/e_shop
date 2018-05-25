@@ -1,0 +1,626 @@
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Roboto, sans-serif !important;
+  background-color: #fff;
+  color: #574b4b;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+input:focus {
+  outline: none;
+}
+.searchClass {
+  padding: 10px;
+}
+.paperParent {
+  z-index: 1;
+  max-width: 1035px !important;
+  margin-bottom: 100px;
+}
+.centerItems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttonStyle {
+  height: 100%;
+  width: 100%;
+}
+.cardStyle {
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+.quatity {
+  height: 30px;
+  width: 30px;
+  background: lightgray;
+  border-radius: 20px;
+}
+.boldFonts {
+  font-weight: bold;
+}
+.boldFontsPrint {
+  font-weight: normal;
+}
+/* Scrollbar CSS */
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+  background: rgba(0, 0, 0, 0);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(127, 127, 127, 0.5);
+  -webkit-border-radius: 1ex;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-corner {
+  background: #000;
+}
+.image {
+  /* background-color: lightblue */
+  min-height: 350px;
+}
+.noPad {
+  padding: 0px;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.boldFont {
+  font-weight: bold;
+}
+.eventHead {
+  position: relative;
+  background: transparent;
+}
+.regBut {
+  background-color: #00ab44 !important;
+  color: white !important;
+  margin: 10px !important;
+  width: 30%;
+}
+.mobRegBut {
+  background-color: #00ab44 !important;
+  color: white !important;
+  margin: 15px 0px;
+  width: 80%;
+}
+.mobIsFree {
+  padding: 10px 0px;
+}
+.marTop20 {
+  margin-top: 20px !important;
+}
+.marTop10 {
+  margin-top: 10px !important;
+}
+.marTop50 {
+  margin-top: 50px;
+}
+.overViewpane {
+  padding: 20px;
+}
+.eventTitle {
+  padding-top: 6%;
+}
+.alignLeft {
+  text-align: left;
+}
+.alignCenter {
+  text-align: center;
+}
+.eventCaption {
+  font-size: 170%;
+  font-weight: bold;
+}
+.eventBy {
+  font-size: 110%;
+}
+.isFree {
+  position: absolute;
+  bottom: 10px;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.captionDiv {
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  flex-direction: row;
+}
+.borderToContent {
+  border: 1px solid darkgray;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 20px !important;
+}
+.orgnizerName {
+  padding-top: 20px;
+}
+h4 {
+  margin: 0px !important;
+}
+.sectionTitleCap {
+  font-size: 120%;
+}
+.sectionTitle {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 90%;
+}
+.datetimePane {
+  text-align: left;
+}
+.description {
+  word-spacing: 8px;
+}
+.datetimeformatting {
+  letter-spacing: 1px;
+}
+.locationFormatting {
+  width: 60%;
+  word-spacing: 5px;
+}
+.OrganizerTitle {
+  font-size: 120%;
+  font-weight: bold;
+}
+.OrganizerDesc {
+  letter-spacing: 1px;
+}
+.tag {
+  border: 1px solid !important;
+  margin-bottom: 10px !important;
+  background-color: transparent !important;
+}
+.tag:hover {
+  border: 1px solid;
+  border-color: #007f8c;
+  color: #007f8c;
+  background-color: transparent;
+}
+.backgroundImageBlur {
+  width: 101%;
+  z-index: 0;
+  background-size: cover;
+  display: block;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  margin-top: 5px;
+}
+.OrganizerAddress {
+  font-size: 80%;
+}
+.iconsParent {
+  display: flex;
+  justify-content: center;
+}
+.mapIcon:hover {
+  background-color: #3f51b5;
+  color: white;
+}
+.mobileregister {
+  position: fixed;
+  bottom: 0px;
+  z-index: 2;
+  width: 100%;
+  padding: 10px 0px 20px 0px;
+  background: white;
+  border-top: 1px solid darkgrey;
+}
+.sticky {
+  margin-top: -583px;
+  z-index: 99;
+  width: 74.8%;
+  position: fixed;
+  text-align: end;
+  box-shadow: 0 5px 5px -5px #333;
+  background: white;
+  color: #666a73;
+  max-width: 1020px;
+}
+.stickyTitle {
+  padding-left: 120px !important;
+  padding-top: 10px;
+}
+.mobPadlr20 {
+  padding: 0px 20px;
+}
+.stickyEventTitle {
+  font-size: 120%;
+}
+.stickyEventDate {
+  font-size: 90%;
+}
+.stickyRegBut {
+  background-color: #00ab44 !important;
+  color: white !important;
+  margin: 10px !important;
+  width: 90%;
+}
+.freeSticky {
+  display: flex;
+  align-items: center;
+}
+.fieldlabel {
+  display: flex;
+  color: #000 !important;
+  align-items: center;
+}
+.eventQuestionLabel {
+  display: flex;
+  align-items: center;
+  color: #000 !important;
+  text-align: left;
+}
+.reqMark {
+  color: red;
+  padding: 0px 5px;
+}
+.padRig7 {
+  padding-right: 7px;
+}
+.userInfoSectionParent {
+  border: 1px solid darkgray;
+  border-radius: 4px;
+  margin: 15px 0px;
+  padding-bottom: 15px;
+  box-shadow: 0 5px 5px -5px #333;
+}
+.userInfoSectionHeader {
+  background-color: lightgray;
+  padding: 10px;
+  font-weight: bold;
+  color: #2525c0;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.marBot20 {
+  margin-bottom: 20px !important;
+}
+.marBot10 {
+  margin-bottom: 10px !important;
+}
+.marBot50 {
+  margin-bottom: 50px !important;
+}
+.userInfoSection {
+  padding-left: 20px;
+}
+.eventContextDescparent {
+  min-height: 150px;
+}
+.contextParent {
+}
+.contextOrgAddress {
+  width: 50%;
+}
+.contextSecTitle {
+  font-weight: bold;
+  font-size: 100%;
+}
+.contextSectionPane {
+  border: 1px solid darkgray;
+  border-radius: 10px;
+  padding: 10px;
+}
+.font80p {
+  font-size: 80%;
+}
+.settionTitle {
+  font-size: 130%;
+}
+.sessionDateTime {
+  font-size: 90%;
+  letter-spacing: 2px;
+}
+.speakerName {
+  font-weight: bold;
+}
+.speakerAbout {
+  font-size: 90%;
+  letter-spacing: 1px;
+}
+.themeColor {
+}
+.alignitcenter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.rccs {
+  /* margin: 0 auto; */
+  -webkit-perspective: 1000px;
+  /* perspective: 1000px; */
+  width: 290px;
+  float: right;
+}
+.orderId {
+  font-style: italic;
+  color: green;
+}
+.successMessage {
+  font-size: 130%;
+  color: green;
+  margin-bottom: 20px;
+}
+.speakersParent {
+  font-size: 90%;
+  margin-bottom: 30px;
+}
+.mobVenueDetails {
+  color: #005580;
+  border-bottom: 1px solid #005580;
+  padding: 10px;
+}
+.showMore {
+  cursor: pointer;
+  padding: 1px 10px;
+  color: #007f8c;
+  line-height: 3;
+  border: 1px solid #007f8c;
+  border-radius: 13px;
+  white-space: nowrap;
+  font-size: 80%;
+}
+.showMore:hover {
+  background-color: #007f8c;
+  color: white;
+}
+.eventimagebackground {
+  max-height: 500px;
+  overflow: hidden;
+}
+.evetsPane {
+  min-height: 85vh;
+}
+.eventsRenderer {
+  max-width: 1090px !important;
+}
+.eventsSearch {
+  position: relative;
+  max-width: 1090px !important;
+}
+.eventsTile {
+  margin-top: 100px;
+}
+.searchdropdown {
+  margin-left: 84px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 15%;
+}
+.searchbutton {
+  line-height: 24px !important;
+  width: 200%;
+  margin-left: 3% !important;
+  background-color: #f86820 !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+.searchbutton:hover {
+  background-color: #b76238 !important;
+}
+.searchPaper {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  border-radius: 2px !important;
+  margin-top: -80px;
+  color: #f86820;
+}
+
+.searchPagePaper {
+  margin-top: 50px;
+  width: 100%;
+  z-index: 1;
+  border-radius: 2px !important;
+  color: #f86820;
+}
+.searchBoxes {
+  margin-bottom: 50px;
+}
+.titleTextEvents {
+  font-size: 230%;
+  font-weight: 300;
+}
+.footerParent {
+  border-top: #666a73 solid 6px;
+  background: #282c35;
+  color: white;
+  margin-top: 50px;
+}
+.footerSectionHead {
+  font-size: 90%;
+  margin-bottom: 20px;
+  color: #adb0b6;
+}
+.footerlinksParent {
+  text-align: left;
+  margin-top: 50px;
+  padding-left: 30px;
+}
+.backWhitish {
+  background-color: #adb0b652 !important;
+}
+.footerSectionItem {
+  font-size: 80%;
+  padding: 5px 0px;
+  color: #d2d6df;
+}
+.footerSectionItem a {
+  color: #d2d6df;
+}
+.contryText {
+  font-size: 80%;
+  padding: 5px 0px;
+  margin-right: 20px;
+  color: #d2d6df;
+}
+.sitelinks {
+  padding-left: 10px;
+}
+.siteFooterLinks {
+  padding-left: 10px;
+}
+.footerMenuItemText {
+  font-size: 95%;
+  padding: 5px 0px;
+  margin-right: 20px;
+  color: #d2d6df;
+}
+.companayName {
+  font-size: 120%;
+  color: #d2d6df;
+  margin-bottom: 50px;
+}
+.eventTitleColor {
+  color: #282c35 !important;
+}
+.eventDescriptionColor {
+  color: #666a73 !important;
+}
+.eventSectionTitleColor {
+  color: #282c35 !important;
+}
+.eventSectionDescriptionColor {
+  color: #666a73 !important;
+}
+.dateTimeFormatsColor {
+  color: #095ad5 !important;
+}
+.linksColor {
+  color: #007f8c !important;
+}
+.contextSectionTitleColor {
+  color: #005580 !important;
+}
+.contextSectionHeadingColor {
+  color: #005580 !important;
+}
+.contextSectionDescriptionColor {
+  color: #000 !important;
+}
+.registrationSectionTitleColor {
+  color: #007f8c !important;
+}
+.registrationSectionDescriptionColor {
+  color: #666a73 !important;
+}
+.registrationDateTimeColor {
+  color: #666a73 !important;
+}
+.registrationSpeakerNameColor {
+  color: #282c35 !important;
+}
+.sessionHeading {
+  color: #2a3d6de0;
+}
+.sessionDetailsPane {
+  padding-left: 27px;
+}
+.speakerPane {
+  width: 200px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.loader {
+  text-align: center;
+}
+.Select.is-focused:not(.is-open) > .Select-control {
+  border-color: #3f51b5 !important;
+}
+.searchTilesParent {
+  overflow: hidden;
+  width: 100%;
+}
+.searchimage {
+  display: inline-block;
+  height: 165px;
+  padding: 0px !important;
+  cursor: pointer;
+}
+.searchTileContent {
+  padding-top: 15px;
+  padding-left: 20px;
+  height: 120px;
+  border-bottom: 1px solid #e3e3e3;
+  position: relative;
+  cursor: pointer;
+}
+.tagsParent {
+  padding-left: 20px;
+}
+.searchTag {
+  font-size: 80%;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.searchTag:hover {
+  color: #007f8c;
+}
+.searchedDate {
+  font-size: 90%;
+}
+.searchedTitle {
+  font-size: 120%;
+  font-weight: bold;
+  padding-top: 12px;
+}
+.searchedAddress {
+  font-size: 90%;
+  position: absolute;
+  bottom: 10px;
+}
+.padLef0 {
+  padding-left: 0px !important;
+}
+.foundString {
+  font-weight: bold;
+  font-size: 120%;
+}
+.OneWarning {
+  margin-top: 5px;
+  font-style: italic;
+}
+@media only screen and (max-width: 807px) {
+  body {
+    font-size: 14px;
+  }
+  .image {
+    min-height: 250px;
+  }
+  .locationFormatting {
+    width: 100%;
+  }
+  .rccs {
+    /* margin: 0 auto; */
+    -webkit-perspective: 1000px;
+    /* perspective: 1000px; */
+    width: 290px;
+    margin: unset !important;
+  }
+  .eventContextDescparent {
+    min-height: 110px;
+  }
+  .dateTimeFormatsColor {
+  }
+}
+.errorMail {
+  color: red;
+  position: absolute;
+  top: 33px;
+  font-size: 80%;
+}
+.stripText + span {
+  text-decoration: line-through !important;
+  color: lightgray !important;
+}

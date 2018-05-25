@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    },
+    "sourceType": "module",
+    "ecmaVersion": 8
+  },
+  "plugins": ["react"],
+  "rules": {
+    "no-console": 1,
+    "no-debugger": 1,
+    "no-dupe-keys": 1,
+    "no-empty": 1,
+    "no-extra-semi": 1,
+    "no-invalid-regexp": 1,
+    "no-irregular-whitespace": 1,
+    "no-unreachable": 1,
+    "no-alert": 1,
+    "no-else-return": 1,
+    "no-delete-var": 1,
+    "no-undef": 1,
+    "no-undefined": 1,
+    "no-unused-vars": 1,
+    "no-var": 1
+  },
+  "extends": "eslint:recommended"
+}

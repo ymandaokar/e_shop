@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <title>Tofa</title>
+    <style type="text/css">
+        .cllf {
+            font-family: 'Roboto', sans-serif;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 56px;
+            height: 56px;
+            margin: auto;
+            display: box;
+            display: -o-box;
+            display: -ms-box;
+            display: -webkit-box;
+            display: -moz-box;
+            display: flex;
+            display: -o-flex;
+            display: -ms-flex;
+            display: -webkit-flex;
+            display: -moz-flex;
+            flex-flow: row wrap;
+            -o-flex-flow: row wrap;
+            -ms-flex-flow: row wrap;
+            -webkit-flex-flow: row wrap;
+            -moz-flex-flow: row wrap;
+        }
+
+        .cllf .cd {
+            width: 11px;
+            height: 11px;
+        }
+
+        .cllf .cd:nth-child(1) {
+            background: rgb(32, 223, 214);
+            animation: cl 0.35s linear -0.12s infinite alternate;
+            -o-animation: cl 0.35s linear -0.12s infinite alternate;
+            -ms-animation: cl 0.35s linear -0.12s infinite alternate;
+            -webkit-animation: cl 0.35s linear -0.12s infinite alternate;
+            -moz-animation: cl 0.35s linear -0.12s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(2) {
+            background: rgb(32, 223, 220);
+            animation: cl 0.35s linear -0.23s infinite alternate;
+            -o-animation: cl 0.35s linear -0.23s infinite alternate;
+            -ms-animation: cl 0.35s linear -0.23s infinite alternate;
+            -webkit-animation: cl 0.35s linear -0.23s infinite alternate;
+            -moz-animation: cl 0.35s linear -0.23s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(3) {
+            background: rgb(32, 220, 223);
+            animation: cl 0.35s linear -0.35s infinite alternate;
+            -o-animation: cl 0.35s linear -0.35s infinite alternate;
+            -ms-animation: cl 0.35s linear -0.35s infinite alternate;
+            -webkit-animation: cl 0.35s linear -0.35s infinite alternate;
+            -moz-animation: cl 0.35s linear -0.35s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(4) {
+            background: rgb(32, 214, 223);
+            animation: cl 0.35s linear -0.46s infinite alternate;
+            -o-animation: cl 0.35s linear -0.46s infinite alternate;
+            -ms-animation: cl 0.35s linear -0.46s infinite alternate;
+            -webkit-animation: cl 0.35s linear -0.46s infinite alternate;
+            -moz-animation: cl 0.35s linear -0.46s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(5) {
+            background: rgb(32, 207, 223);
+            animation: cl 0.35s linear -0.58s infinite alternate;
+            -o-animation: cl 0.35s linear -0.58s infinite alternate;
+            -ms-animation: cl 0.35s linear -0.58s infinite alternate;
+            -webkit-animation: cl 0.35s linear -0.58s infinite alternate;
+            -moz-animation: cl 0.35s linear -0.58s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(6) {
+            background: rgb(32, 201, 223);
+            animation: cl 0.35s linear -0.69s infinite alternate;
+            -o-animation: cl 0.35s linear -0.69s infinite alternate;
+            -ms-animation: cl 0.35s linear -0.69s infinite alternate;
+            -webkit-animation: cl 0.35s linear -0.69s infinite alternate;
+            -moz-animation: cl 0.35s linear -0.69s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(7) {
+            background: rgb(32, 194, 223);
+            animation: cl 0.35s linear -0.81s infinite alternate;
+            -o-animation: cl 0.35s linear -0.81s infinite alternate;
+            -ms-animation: cl 0.35s linear -0.81s infinite alternate;
+            -webkit-animation: cl 0.35s linear -0.81s infinite alternate;
+            -moz-animation: cl 0.35s linear -0.81s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(8) {
+            background: rgb(32, 188, 223);
+            animation: cl 0.35s linear -0.92s infinite alternate;
+            -o-animation: cl 0.35s linear -0.92s infinite alternate;
+            -ms-animation: cl 0.35s linear -0.92s infinite alternate;
+            -webkit-animation: cl 0.35s linear -0.92s infinite alternate;
+            -moz-animation: cl 0.35s linear -0.92s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(9) {
+            background: rgb(32, 182, 223);
+            animation: cl 0.35s linear -1.04s infinite alternate;
+            -o-animation: cl 0.35s linear -1.04s infinite alternate;
+            -ms-animation: cl 0.35s linear -1.04s infinite alternate;
+            -webkit-animation: cl 0.35s linear -1.04s infinite alternate;
+            -moz-animation: cl 0.35s linear -1.04s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(10) {
+            background: rgb(32, 175, 223);
+            animation: cl 0.35s linear -1.15s infinite alternate;
+            -o-animation: cl 0.35s linear -1.15s infinite alternate;
+            -ms-animation: cl 0.35s linear -1.15s infinite alternate;
+            -webkit-animation: cl 0.35s linear -1.15s infinite alternate;
+            -moz-animation: cl 0.35s linear -1.15s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(11) {
+            background: rgb(32, 169, 223);
+            animation: cl 0.35s linear -1.27s infinite alternate;
+            -o-animation: cl 0.35s linear -1.27s infinite alternate;
+            -ms-animation: cl 0.35s linear -1.27s infinite alternate;
+            -webkit-animation: cl 0.35s linear -1.27s infinite alternate;
+            -moz-animation: cl 0.35s linear -1.27s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(12) {
+            background: rgb(32, 163, 223);
+            animation: cl 0.35s linear -1.38s infinite alternate;
+            -o-animation: cl 0.35s linear -1.38s infinite alternate;
+            -ms-animation: cl 0.35s linear -1.38s infinite alternate;
+            -webkit-animation: cl 0.35s linear -1.38s infinite alternate;
+            -moz-animation: cl 0.35s linear -1.38s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(13) {
+            background: rgb(32, 156, 223);
+            animation: cl 0.35s linear -1.5s infinite alternate;
+            -o-animation: cl 0.35s linear -1.5s infinite alternate;
+            -ms-animation: cl 0.35s linear -1.5s infinite alternate;
+            -webkit-animation: cl 0.35s linear -1.5s infinite alternate;
+            -moz-animation: cl 0.35s linear -1.5s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(14) {
+            background: rgb(32, 150, 223);
+            animation: cl 0.35s linear -1.61s infinite alternate;
+            -o-animation: cl 0.35s linear -1.61s infinite alternate;
+            -ms-animation: cl 0.35s linear -1.61s infinite alternate;
+            -webkit-animation: cl 0.35s linear -1.61s infinite alternate;
+            -moz-animation: cl 0.35s linear -1.61s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(15) {
+            background: rgb(32, 143, 223);
+            animation: cl 0.35s linear -1.73s infinite alternate;
+            -o-animation: cl 0.35s linear -1.73s infinite alternate;
+            -ms-animation: cl 0.35s linear -1.73s infinite alternate;
+            -webkit-animation: cl 0.35s linear -1.73s infinite alternate;
+            -moz-animation: cl 0.35s linear -1.73s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(16) {
+            background: rgb(32, 137, 223);
+            animation: cl 0.35s linear -1.84s infinite alternate;
+            -o-animation: cl 0.35s linear -1.84s infinite alternate;
+            -ms-animation: cl 0.35s linear -1.84s infinite alternate;
+            -webkit-animation: cl 0.35s linear -1.84s infinite alternate;
+            -moz-animation: cl 0.35s linear -1.84s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(17) {
+            background: #2083df;
+            animation: cl 0.35s linear -1.96s infinite alternate;
+            -o-animation: cl 0.35s linear -1.96s infinite alternate;
+            -ms-animation: cl 0.35s linear -1.96s infinite alternate;
+            -webkit-animation: cl 0.35s linear -1.96s infinite alternate;
+            -moz-animation: cl 0.35s linear -1.96s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(18) {
+            background: #207cdf;
+            animation: cl 0.35s linear -2.07s infinite alternate;
+            -o-animation: cl 0.35s linear -2.07s infinite alternate;
+            -ms-animation: cl 0.35s linear -2.07s infinite alternate;
+            -webkit-animation: cl 0.35s linear -2.07s infinite alternate;
+            -moz-animation: cl 0.35s linear -2.07s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(19) {
+            background: #2076df;
+            animation: cl 0.35s linear -2.19s infinite alternate;
+            -o-animation: cl 0.35s linear -2.19s infinite alternate;
+            -ms-animation: cl 0.35s linear -2.19s infinite alternate;
+            -webkit-animation: cl 0.35s linear -2.19s infinite alternate;
+            -moz-animation: cl 0.35s linear -2.19s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(20) {
+            background: #2070df;
+            animation: cl 0.35s linear -2.3s infinite alternate;
+            -o-animation: cl 0.35s linear -2.3s infinite alternate;
+            -ms-animation: cl 0.35s linear -2.3s infinite alternate;
+            -webkit-animation: cl 0.35s linear -2.3s infinite alternate;
+            -moz-animation: cl 0.35s linear -2.3s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(21) {
+            background: #2069df;
+            animation: cl 0.35s linear -2.42s infinite alternate;
+            -o-animation: cl 0.35s linear -2.42s infinite alternate;
+            -ms-animation: cl 0.35s linear -2.42s infinite alternate;
+            -webkit-animation: cl 0.35s linear -2.42s infinite alternate;
+            -moz-animation: cl 0.35s linear -2.42s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(22) {
+            background: #2063df;
+            animation: cl 0.35s linear -2.53s infinite alternate;
+            -o-animation: cl 0.35s linear -2.53s infinite alternate;
+            -ms-animation: cl 0.35s linear -2.53s infinite alternate;
+            -webkit-animation: cl 0.35s linear -2.53s infinite alternate;
+            -moz-animation: cl 0.35s linear -2.53s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(23) {
+            background: #205cdf;
+            animation: cl 0.35s linear -2.65s infinite alternate;
+            -o-animation: cl 0.35s linear -2.65s infinite alternate;
+            -ms-animation: cl 0.35s linear -2.65s infinite alternate;
+            -webkit-animation: cl 0.35s linear -2.65s infinite alternate;
+            -moz-animation: cl 0.35s linear -2.65s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(24) {
+            background: #2056df;
+            animation: cl 0.35s linear -2.76s infinite alternate;
+            -o-animation: cl 0.35s linear -2.76s infinite alternate;
+            -ms-animation: cl 0.35s linear -2.76s infinite alternate;
+            -webkit-animation: cl 0.35s linear -2.76s infinite alternate;
+            -moz-animation: cl 0.35s linear -2.76s infinite alternate;
+        }
+
+        .cllf .cd:nth-child(25) {
+            background: #2050df;
+            animation: cl 0.35s linear -2.88s infinite alternate;
+            -o-animation: cl 0.35s linear -2.88s infinite alternate;
+            -ms-animation: cl 0.35s linear -2.88s infinite alternate;
+            -webkit-animation: cl 0.35s linear -2.88s infinite alternate;
+            -moz-animation: cl 0.35s linear -2.88s infinite alternate;
+        }
+
+        @keyframes cl {
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+        }
+
+        @-o-keyframes cl {
+            100% {
+                opacity: 0;
+                -o-transform: scale(0.5);
+            }
+        }
+
+        @-ms-keyframes cl {
+            100% {
+                opacity: 0;
+                -ms-transform: scale(0.5);
+            }
+        }
+
+        @-webkit-keyframes cl {
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(0.5);
+            }
+        }
+
+        @-moz-keyframes cl {
+            100% {
+                opacity: 0;
+                -moz-transform: scale(0.5);
+            }
+        }
+    </style>
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+
+<body>
+    <div id="app" style="height:100%;">
+        <div class="cllf">
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            <div class="cd"></div>
+            Loading...
+        </div>
+    </div>
+</body>
+
+</html>
