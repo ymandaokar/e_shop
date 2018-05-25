@@ -1,0 +1,17 @@
+FROM nginx:alpine
+
+ENV app="/etc/nginx"
+
+EXPOSE 80
+
+WORKDIR $app
+
+RUN mv $app/conf.d/default.conf $app/conf.d/default.conf.bak
+
+COPY ["/packages/ui/generator.sh", "$app/conf.d/generator.sh"]
+
+RUN chmod +x $app/conf.d/generator.sh
+
+COPY ["/packages/ui/build/", "/var/www/sites/e_cart/"]
+
+ENTRYPOINT $app/conf.d/generator.sh

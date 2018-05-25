@@ -1,0 +1,38 @@
+FROM node:6.12.1-alpine
+
+# install 
+RUN apk --update add imagemagick && \
+    apk --update add make && \
+    apk --update add g++ && \
+    apk --update add python && \
+    apk --update add curl && \
+    apk --update add git && \
+    rm -rf /var/cache/apk/*
+
+ENV E_CART=/home/app/e_cart
+
+WORKDIR $E_CART
+
+COPY packages/api/package.json $E_CART/package.json 
+
+#install e_cart dependencies, excluding devDependencies (--production)
+#and be quiet!
+RUN yarn install --production --silent
+
+#pm2 install
+RUN yarn global add pm2
+
+#copy server code
+COPY packages/api/src $E_CART/src/
+
+#copy chech-mode
+COPY packages/api/check-mode.sh $E_CART/check-mode.sh
+
+EXPOSE 8080
+
+COPY /packages/ui/build/ $E_CART/build/
+
+RUN sed -i 's/\r$//' $E_CART/check-mode.sh  && \  
+    chmod +x $E_CART/check-mode.sh
+
+ENTRYPOINT  $E_CART/check-mode.sh
