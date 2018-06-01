@@ -3,6 +3,7 @@ import Reflux from "reflux-core";
 const Actions = Reflux.createActions([
   "loadProducts",
   "loadProduct",
+  "loadData",
   "setCardtInfo",
   "processPayment",
   "finish",

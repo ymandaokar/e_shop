@@ -770,5 +770,84 @@ exports.HeroData = {
 
 exports.organisationalConfig = {
   logo: "./extern/logo.jpeg",
-  title: "Bitpod"
+  title: "Tofa"
 };
+exports.categories = [
+  {
+    Code: "C10001",
+    Description: "",
+    DisplayOrder: 1,
+    Image: "",
+    IsActive: true,
+    Name: "Electronics",
+    ParentCategoryId: "",
+    Tags: "",
+    id: "1"
+  },
+  {
+    Code: "C10002",
+    Description: "",
+    DisplayOrder: 1,
+    Image: "",
+    IsActive: true,
+    Name: "TVs & Appliences",
+    ParentCategoryId: "",
+    Tags: "",
+    id: "2"
+  },
+  {
+    Code: "C10003",
+    Description: "",
+    DisplayOrder: 1,
+    Image: "",
+    IsActive: true,
+    Name: "Women",
+    ParentCategoryId: "",
+    Tags: "",
+    id: "3"
+  },
+  {
+    Code: "C10004",
+    Description: "",
+    DisplayOrder: 1,
+    Image: "",
+    IsActive: true,
+    Name: "Baby & Kids",
+    ParentCategoryId: "",
+    Tags: "",
+    id: "4"
+  },
+  {
+    Code: "C10005",
+    Description: "",
+    DisplayOrder: 1,
+    Image: "",
+    IsActive: true,
+    Name: "Home & Furniture",
+    ParentCategoryId: "",
+    Tags: "",
+    id: "5"
+  },
+  {
+    Code: "C10006",
+    Description: "",
+    DisplayOrder: 1,
+    Image: "",
+    IsActive: true,
+    Name: "Mobile",
+    ParentCategoryId: "1",
+    Tags: "",
+    id: "6"
+  },
+  {
+    Code: "C10007",
+    Description: "",
+    DisplayOrder: 1,
+    Image: "",
+    IsActive: true,
+    Name: "Laptops",
+    ParentCategoryId: "1",
+    Tags: "",
+    id: "7"
+  }
+];

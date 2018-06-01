@@ -42,25 +42,6 @@ class Home extends Component {
                 : {}
             }
           >
-            <div className="homeCatParent">
-              {categories &&
-                !!categories.length && (
-                  <div className="">
-                    {categories.map(category => {
-                      return (
-                        <div className="homeCategory" key={category.Code}>
-                          <button
-                            className="btn-link homeCatButton"
-                            onClick={this.handleCategoryClick}
-                          >
-                            {category.Name}
-                          </button>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-            </div>
             <div className={!isMobile ? "marTB20" : "marBot20"}>
               <SimpleSlider
                 items={HeroData.items}

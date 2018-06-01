@@ -1,6 +1,6 @@
 .grayColorBack {
   background-color: lightgray;
-  margin-top: 60px;
+  margin-top: 48px;
 }
 .containerDiv {
   border: 1px solid #d3d3d385;
@@ -327,6 +327,7 @@
   border-radius: 3px;
   font-weight: 700;
   color: darkslategray;
+  background-color: transparent;
 }
 
 .mobileGrid {
@@ -359,4 +360,8 @@
 .homeCatParent {
   box-shadow: 0 4px 5px 0 rgba(173, 173, 173, 0.67),
     0 6px 20px 0 rgba(0, 0, 0, 0);
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
 }

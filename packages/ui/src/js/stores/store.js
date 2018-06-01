@@ -3,7 +3,7 @@ import createStore from "reflux-core/lib/createStore";
 import Immutable from "immutable";
 import Actions from "../actions/actions.js";
 import ObjectID from "bson-objectid";
-import {} from "lodash-es";
+import { filter } from "lodash-es";
 import axios from "axios";
 import {
   stripeConfig,
@@ -12,6 +12,7 @@ import {
   productsLimit
 } from "../appsettings.js";
 import PaymentGatewayFactory from "../helpers/paymentgatwatfactory.js";
+import { categories } from "../helpers/appdata.js";
 const paymentGatewayTypes = {
   stripe: {
     token: stripeConfig.apiKey,
@@ -24,6 +25,19 @@ const paymentGatewayTypes = {
     token: paypal.apiKey
   }
 };
+function addSubCatagorisToCategories(categories, subCategories) {
+  return categories.map(category => {
+    category.children = filter(
+      subCategories,
+      obj => obj.ParentCategoryId == category.id
+    );
+    subCategories = filter(
+      subCategories,
+      obj => obj.ParentCategoryId != category.id
+    );
+    return category;
+  });
+}
 const AppStore = Reflux.createStore({
   listenables: [Actions],
   _skip: 0,
@@ -39,7 +53,8 @@ const AppStore = Reflux.createStore({
         cvc: ""
       }),
       totalPage: 0,
-      currentPage: 0
+      currentPage: 0,
+      categories: Immutable.Set()
     });
   },
   validateEmail: function(mail) {
@@ -212,6 +227,55 @@ const AppStore = Reflux.createStore({
           })
         )
     );
+  },
+  getCategories() {
+    //For Localhost use the below url
+    // const url = `${siteURL}/svc/api/Categories`;
+
+    // return axios({
+    //   method: "get",
+    //   url
+    // }).then(response => {
+    //   let categories = [],
+    //     subCategories = [];
+    //   response.data.forEach(category => {
+    //     if (!category.IsActive) {
+    //       return;
+    //     }
+    //     if (!category.ParentCategoryId) {
+    //       categories.push(category);
+    //     } else {
+    //       subCategories.push(category);
+    //     }
+    //   });
+    //   categories = addSubCatagorisToCategories(categories, subCategories);
+    //   this.updateState(
+    //     this.state.set("categories", Immutable.Set(categories)),
+    //     true
+    //   );
+    //   return;
+    // });
+    let Categories = [],
+      subCategories = [];
+    categories.forEach(category => {
+      if (!category.IsActive) {
+        return;
+      }
+      if (!category.ParentCategoryId) {
+        Categories.push(category);
+      } else {
+        subCategories.push(category);
+      }
+    });
+    Categories = addSubCatagorisToCategories(Categories, subCategories);
+    this.updateState(
+      this.state.set("categories", Immutable.Set(Categories)),
+      true
+    );
+  },
+  loadData() {
+    this.getCategories();
+    this.triggerState();
   }
 });
 
