@@ -28,7 +28,7 @@ module.exports = {
   },
   dbServer: {
     userDB: `http://${cdbUser}:${cdbPass}@${dbHost}/${process.env
-      .COUCHDB_SLUSERDB || "qme-cand"}`,
+      .COUCHDB_SLUSERDB || "ecart-cand"}`,
     couchAuthDB: `http://${cdbUser}:${cdbPass}@${dbHost}/${process.env
       .COUCHDB_AUTHDB || "_users"}`
   },

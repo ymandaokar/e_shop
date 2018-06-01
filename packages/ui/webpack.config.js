@@ -87,8 +87,7 @@ module.exports = {
               name: "fonts/[name].[ext]"
             }
           }
-        ],
-        exclude: /node_modules/
+        ]
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -101,8 +100,26 @@ module.exports = {
   },
   plugins: plugins,
   devServer: {
+    proxy: {
+      "/user": {
+        target: process.env.surveySource || "http://localhost:8080",
+        secure: false
+      },
+      "/auth": {
+        target: process.env.surveySource || "http://localhost:8080",
+        secure: false
+      },
+      "/db": {
+        target: process.env.surveySource || "http://localhost:8080",
+        secure: false
+      },
+      "/healthz": {
+        target: process.env.surveySource || "http://localhost:8080",
+        secure: false
+      }
+    },
     contentBase: path.join(__dirname, "build"),
-    port: process.env.surveyPort || 8080,
+    port: process.env.surveyPort || 8081,
     historyApiFallback: true,
     host: process.env.surveyHost || "localhost"
   },
@@ -115,7 +132,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      react: path.resolve(__dirname, "./node_modules", "react")
+      react: path.resolve(__dirname, "../../node_modules", "react")
     }
   },
   devtool: devtool

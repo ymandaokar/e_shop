@@ -5,7 +5,8 @@
   "author": "Yogesh M. Mandaokar",
   "license": "MIT",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors",
+    "start":
+      "node ../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors",
     "build": "set NODE_ENV=production&& webpack -p"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
     "flexboxgrid": "^6.3.1",
     "immutable": "^3.8.2",
     "lodash-es": "^4.17.10",
+    "node-vibrant": "^3.0.0",
     "material-ui": "^1.0.0-beta.37",
     "material-ui-icons": "^1.0.0-beta.36",
     "material-ui-pickers": "^1.0.0-rc.3",
@@ -25,18 +27,29 @@
     "react": "latest",
     "react-addons-pure-render-mixin": "^15.0.2",
     "react-collapse": "^4.0.3",
+    "react-content-loader": "^3.1.2",
     "react-credit-cards": "^0.7.0",
+    "react-custom-scrollbars": "^4.1.1",
     "react-dom": "latest",
     "react-grid-layout": "0.16.3",
+    "react-imageloader": "^3.0.0",
     "react-infinite-scroll-component": "^4.0.2",
     "react-lazyload": "^2.3.0",
+    "react-motion": "^0.5.2",
     "react-responsive": "^4.0.5",
+    "react-responsive-carousel": "^3.1.35",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "react-slick": "^0.23.1",
+    "react-spinners": "^0.3.2",
+    "react-transition-group": "^1.1.2",
+    "reactstrap": "^6.0.1",
     "react-sticky": "^6.0.1",
     "recharts": "^1.0.0-beta.10",
     "reflux": "^6.4.1",
-    "reflux-core": "^1.0.0"
+    "reflux-core": "^1.0.0",
+    "slick-carousel": "^1.8.1",
+    "timediff": "^1.1.1"
   },
   "devDependencies": {
     "babel": "^6.5.2",
@@ -61,6 +74,7 @@
     "eslint": "^2.13.1",
     "eslint-plugin-react": "^5.0.1",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "file-loader": "^1.1.6",
     "html-webpack-plugin": "^3.1.0",
     "lodash-webpack-plugin": "^0.11.4",
     "preload-css-webpack-plugin": "^0.2.0",

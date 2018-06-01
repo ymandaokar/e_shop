@@ -13,8 +13,8 @@ module.exports = function proxyCheck(proxypath) {
     _dbPaths = proxypath.split("/");
   if (
     !(
-      _.startsWith(_dbPaths[1], "survey%24") ||
-      _.startsWith(_dbPaths[1], "survey$")
+      _.startsWith(_dbPaths[1], "ecart%24") ||
+      _.startsWith(_dbPaths[1], "ecart$")
     )
   )
     return false;

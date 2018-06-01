@@ -35,7 +35,7 @@ module.exports = {
     user: adminAuth.user,
     password: adminAuth.pass,
     cloudant: false,
-    userDB: "qme-cand",
+    userDB: "ecart-cand",
     couchAuthDB: "_users"
   },
   session: {
@@ -57,7 +57,7 @@ module.exports = {
   },
   userDBs: {
     defaultDBs: {
-      private: ["e_cart"]
+      private: ["ecart"]
     },
     defaultSecurityRoles: {
       admins: ["admin"],

@@ -1,22 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
-import Home from "./Home.js";
-const styles = {
-  root: {
-    flexGrow: 1,
-    minHeight: 46
-  },
-  flex: {
-    flex: 1
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
-  }
-};
 
-class Products extends Component {
+class LandingPage extends Component {
   constructor(props) {
     super(props);
   }
@@ -36,21 +21,17 @@ class Products extends Component {
   componentWillUnmount() {}
 
   render() {
-    let { isMobile } = this.context;
-    return (
-      <div>
-        <Home isMobile={isMobile} />
-      </div>
-    );
+    return <div className="parentofALL">{"LandingPage"}</div>;
   }
 }
 
-Products.propTypes = {
+LandingPage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-Products.contextTypes = {
+LandingPage.childContextTypes = {
   isMobile: PropTypes.bool,
   isShort: PropTypes.bool
 };
-export default withStyles(styles)(Products);
+
+export default LandingPage;

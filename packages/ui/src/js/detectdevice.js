@@ -2,6 +2,8 @@ import React, { PureComponent as Component } from "react";
 import ReactDOM from "react-dom";
 import MediaQuery from "react-responsive";
 import App from "./app.js";
+import styles from "./helpers/styles.js";
+import flexboxgrid from "flexboxgrid";
 class DetectDevice extends Component {
   getChildWithProps(isMobile, isShort) {
     return <App isMobile={isMobile} isShort={isShort} {...this.props} />;
