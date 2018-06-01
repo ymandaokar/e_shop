@@ -6,6 +6,7 @@ import Imagery from "./Imagery.js";
 import ImageryTitle from "./ImageryTitle.js";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Appdata from "../helpers/appdata.js";
 import "../../styles/homestyles.css";
 let {

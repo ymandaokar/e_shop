@@ -93,7 +93,7 @@ class App extends Component {
                         color="inherit"
                         className={classes.flex}
                       >
-                        Tofa
+                        {organisationalConfig.title}
                       </Typography>
                       <IconButton aria-haspopup="true" color="inherit">
                         <AccountCircle />

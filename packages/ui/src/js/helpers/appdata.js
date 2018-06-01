@@ -769,5 +769,6 @@ exports.HeroData = {
 };
 
 exports.organisationalConfig = {
-  logo: "./extern/logo.jpeg"
+  logo: "./extern/logo.jpeg",
+  title: "Bitpod"
 };
