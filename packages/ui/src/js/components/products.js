@@ -46,7 +46,11 @@ class Products extends Component {
       categories = this.state.AppState.get("categories");
     return (
       <div>
-        <Categories categories={categories} isMobile={isMobile} />
+        <Categories
+          categories={categories}
+          isMobile={isMobile}
+          {...this.props}
+        />
         <Home isMobile={isMobile} />
       </div>
     );

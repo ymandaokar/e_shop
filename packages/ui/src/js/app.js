@@ -48,7 +48,12 @@ const styles = {
 class App extends Component {
   constructor() {
     super();
-    this.state = { AppState: null };
+    this.state = { AppState: null, openDrawer: false };
+    this.toggleDrawer = this.toggleDrawer.bind(this);
+  }
+  toggleDrawer() {
+    let { openDrawer } = this.state;
+    this.setState({ openDrawer: !openDrawer });
   }
   getChildContext() {
     return { isMobile: this.props.isMobile, isShort: this.props.isShort };
@@ -66,7 +71,7 @@ class App extends Component {
     history.push({ pathname: `/` });
   }
   render() {
-    let { classes } = this.props;
+    let { classes, isMobile } = this.props;
     return (
       <div className={classes.root}>
         <ThemeContext.Provider
@@ -83,6 +88,16 @@ class App extends Component {
                     }}
                   >
                     <Toolbar className={classes.toolbar}>
+                      {isMobile && (
+                        <IconButton
+                          className={classes.menuButton}
+                          color="inherit"
+                          aria-label="Menu"
+                          onClick={this.toggleDrawer}
+                        >
+                          <MenuIcon />
+                        </IconButton>
+                      )}
                       <Avatar
                         alt="Tofa"
                         src={organisationalConfig.logo}
@@ -105,7 +120,17 @@ class App extends Component {
                   <ScrollToTop location={this.props.location}>
                     <Switch>
                       <Route exact path="/" component={LandingPage} />
-                      <Route exact path="/products" component={Products} />
+                      <Route
+                        exact
+                        path="/products"
+                        render={props => (
+                          <Products
+                            {...this.props}
+                            openDrawer={this.state.openDrawer}
+                            toggleDrawer={this.toggleDrawer.bind(this)}
+                          />
+                        )}
+                      />
                       <Route
                         exact
                         path="/products/search/:key"

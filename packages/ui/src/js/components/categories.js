@@ -9,29 +9,47 @@ import Grow from "material-ui/transitions/Grow";
 import Paper from "material-ui/Paper";
 import Portal from "material-ui/Portal";
 import MenuItem from "material-ui/Menu/MenuItem";
+import List from "material-ui/List";
+import ListItem from "material-ui/List/ListItem";
+import ListItemIcon from "material-ui/List/ListItemIcon";
+import ListItemText from "material-ui/List/ListItemText";
 import MenuList from "material-ui/Menu/MenuList";
 import history from "../helpers/history";
 import Down from "material-ui-icons/KeyboardArrowDown";
 import Up from "material-ui-icons/KeyboardArrowUp";
-const styles = {
+import Drawer from "material-ui/Drawer";
+const styles = theme => ({
   root: {
     flexGrow: 1,
     height: "100%"
   },
   flex: {
     flex: 1
+  },
+  nested: {
+    paddingLeft: theme.spacing.unit * 4
+  },
+  primary: {
+    fontWeight: 700,
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif"
   }
-};
+});
 class categories extends Component {
   constructor() {
     super();
-    this.state = { category: "" };
+    this.state = { category: "", categories: {} };
     this.handleClose = this.handleClose.bind(this);
   }
   handleCategoryClick(id, redirect) {
     if (redirect) {
       history.push({ pathname: `/products/search/${id}` });
     } else {
+      if (this.props.isMobile) {
+        let open = this.state.categories[id];
+        categories[id] = !open;
+        this.setState({ categories });
+        return;
+      }
       this.setState({ category: id });
     }
   }
@@ -39,7 +57,82 @@ class categories extends Component {
     this.setState({ category: "" });
   }
   render() {
-    let { categories, isMobile, classes } = this.props;
+    let {
+      categories,
+      isMobile,
+      classes,
+      openDrawer,
+      toggleDrawer
+    } = this.props;
+    if (isMobile) {
+      return (
+        <Drawer open={openDrawer} onClose={toggleDrawer}>
+          <div tabIndex={0} role="button">
+            {categories &&
+              !!categories.size && (
+                <List>
+                  {categories.map(category => {
+                    return (
+                      <List key={category.id}>
+                        <ListItem
+                          button
+                          onClick={this.handleCategoryClick.bind(
+                            this,
+                            category.id,
+                            !category.children.length
+                          )}
+                        >
+                          <ListItemText
+                            disableTypography={true}
+                            className={classes.primary}
+                            primary={category.Name}
+                          />
+                          {!!category.children.length &&
+                            (this.state.categories[category.id] ? (
+                              <Up />
+                            ) : (
+                              <Down />
+                            ))}
+                        </ListItem>
+                        {!!category.children.length && (
+                          <Collapse
+                            in={this.state.categories[category.id]}
+                            timeout="auto"
+                            unmountOnExit
+                          >
+                            <List component="div" disablePadding>
+                              {category.children.map(child => {
+                                return (
+                                  <ListItem
+                                    button
+                                    className={classes.nested}
+                                    key={child.id}
+                                    onClick={this.handleCategoryClick.bind(
+                                      this,
+                                      child.id,
+                                      true
+                                    )}
+                                  >
+                                    <ListItemText
+                                      disableTypography={true}
+                                      className={classes.primary}
+                                      primary={child.Name}
+                                    />
+                                  </ListItem>
+                                );
+                              })}
+                            </List>
+                          </Collapse>
+                        )}
+                      </List>
+                    );
+                  })}
+                </List>
+              )}
+          </div>
+        </Drawer>
+      );
+    }
     return (
       <div className="row center-xs" style={{ background: "#fcf9f9b5" }}>
         <div
