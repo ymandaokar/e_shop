@@ -325,8 +325,8 @@
 }
 .homeCatButton {
   border-radius: 3px;
-  font-weight: 700;
-  color: darkslategray;
+  font-weight: 700 !important;
+  color: darkslategray !important;
   background-color: transparent;
 }
 
