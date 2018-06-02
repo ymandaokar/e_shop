@@ -18,7 +18,6 @@ import Products from "./components/products.js";
 import SearchProduct from "./components/searchproduct.js";
 import LandingPage from "./components/landingpage.js";
 import Footer from "./components/Footer.js";
-import { organisationalConfig } from "./helpers/appdata.js";
 import { ThemeContext, themes } from "./helpers/theme-context";
 import Avatar from "material-ui/Avatar";
 const styles = {
@@ -71,11 +70,15 @@ class App extends Component {
     history.push({ pathname: `/` });
   }
   render() {
-    let { classes, isMobile } = this.props;
+    let { classes, isMobile } = this.props,
+      organizationalConfig =
+        (this.state.AppState &&
+          this.state.AppState.get("organizationalConfig")) ||
+        {};
     return (
       <div className={classes.root}>
         <ThemeContext.Provider
-          value={organisationalConfig.theme || themes.gray}
+          value={organizationalConfig.theme || themes.gray}
         >
           <ThemeContext.Consumer>
             {themeColors => (
@@ -100,7 +103,7 @@ class App extends Component {
                       )}
                       <Avatar
                         alt="Tofa"
-                        src={organisationalConfig.logo}
+                        src={organizationalConfig.logo}
                         className={classes.avatar}
                       />
                       <Typography
@@ -108,7 +111,7 @@ class App extends Component {
                         color="inherit"
                         className={classes.flex}
                       >
-                        {organisationalConfig.title}
+                        {organizationalConfig.title}
                       </Typography>
                       <IconButton aria-haspopup="true" color="inherit">
                         <AccountCircle />
