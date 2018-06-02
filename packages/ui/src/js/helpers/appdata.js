@@ -859,7 +859,9 @@ exports.products = [
     name: "Lenovo Vibe X3",
     description: "Mobile phone",
     images: [
-      "https://gadgetsloud.com/wp-content/uploads/2016/01/Lenovo-Vibe-X3.jpg"
+      "https://gadgetsloud.com/wp-content/uploads/2016/01/Lenovo-Vibe-X3.jpg",
+      "https://drop.ndtv.com/TECH/product_database/images/11172015105617AM_635_lenovo_vibe_x3.jpeg",
+      "https://img.youtube.com/vi/9pdkoHhEKVc/hqdefault.jpg"
     ],
     categories: ["1", "6"],
     price: 20000,
@@ -874,6 +876,41 @@ exports.products = [
     ],
     categories: ["1", "6"],
     price: 14500,
+    discount: 10
+  },
+  {
+    id: "123",
+    name: "Asus Zenfone Max Pro M1 (Grey, 32 GB)  (3 GB RAM)",
+    description: "3 GB RAM | 32 GB ROM | Expandable Upto 2 TB",
+    images: [
+      "http://www.androidguys.com/wp-content/uploads/2017/08/ZenFone-4-Selfie-Pro.jpg"
+    ],
+    categories: ["1", "6"],
+    price: 10999,
+    discount: 10
+  },
+  {
+    id: "124",
+    name: "Redmi 5A (Gold, 32 GB)  (3 GB RAM)",
+    description: "3 GB RAM | 32 GB ROM | Expandable Upto 128 GB",
+    images: [
+      "http://images.fonearena.com/blog/wp-content/uploads/2018/01/Alcatel-1X-1024x523.jpg",
+      "https://cdn.alzashop.com/ImgW.ashx?fd=f3&cd=ALCT035a",
+      "http://pocketnow.com/wp-content/uploads/2018/02/alcatel-3v-leaks.jpg"
+    ],
+    categories: ["1", "6"],
+    price: 6999,
+    discount: 10
+  },
+  {
+    id: "125",
+    name: "Alcatel 3V (Spectrum Black, 32 GB)  (3 GB RAM)",
+    description: "3 GB RAM | 32 GB ROM | Expandable Upto 128 GB",
+    images: [
+      "http://cdn.techpp.com/wp-content/uploads/2017/04/moto-g5-review-1.jpg"
+    ],
+    categories: ["1", "6"],
+    price: 9999,
     discount: 10
   }
 ];

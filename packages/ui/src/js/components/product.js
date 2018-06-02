@@ -8,6 +8,7 @@ import Counter from "./Counter";
 import AppActions from "../actions/actions.js";
 import AppStore from "../stores/store.js";
 import { ThemeContext } from "../helpers/theme-context";
+import { truncate } from "lodash-es";
 
 class Product extends Component {
   constructor(props) {

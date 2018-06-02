@@ -44,14 +44,18 @@ class CategorizedProducts extends Component {
       return <NoResult />;
     }
     return (
-      <div style={{ display: "flex" }}>
-        {products.map(product => (
-          <ProductCard
-            product={product}
-            key={product.id}
-            currency={organizationalConfig.currency}
-          />
-        ))}
+      <div className="row center-xs">
+        <div className="col-xs-12 start-xs">
+          <div className="products">
+            {products.map(product => (
+              <ProductCard
+                product={product}
+                key={product.id}
+                currency={organizationalConfig.currency}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
