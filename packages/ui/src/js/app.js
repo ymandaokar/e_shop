@@ -26,7 +26,8 @@ const styles = {
     height: "100%"
   },
   flex: {
-    flex: 1
+    flex: 1,
+    cursor: "pointer"
   },
   menuButton: {
     marginLeft: -12,
@@ -35,7 +36,8 @@ const styles = {
   avatar: {
     width: 45,
     height: 45,
-    marginRight: 10
+    marginRight: 10,
+    cursor: "pointer"
   },
   toolbar: {
     padding: 0,
@@ -67,7 +69,7 @@ class App extends Component {
   }
   handleHome() {
     let history = this.props.history;
-    history.push({ pathname: `/` });
+    history.push({ pathname: `/products` });
   }
   render() {
     let { classes, isMobile } = this.props,
@@ -105,11 +107,13 @@ class App extends Component {
                         alt="Tofa"
                         src={organizationalConfig.logo}
                         className={classes.avatar}
+                        onClick={this.handleHome.bind(this)}
                       />
                       <Typography
                         variant="title"
                         color="inherit"
                         className={classes.flex}
+                        onClick={this.handleHome.bind(this)}
                       >
                         {organizationalConfig.title}
                       </Typography>
