@@ -12,7 +12,12 @@ import {
   productsLimit
 } from "../appsettings.js";
 import PaymentGatewayFactory from "../helpers/paymentgatwatfactory.js";
-import { categories } from "../helpers/appdata.js";
+import {
+  categories,
+  products,
+  organisationalConfig
+} from "../helpers/appdata.js";
+import SearchProduct from "../components/searchproduct.js";
 const paymentGatewayTypes = {
   stripe: {
     token: stripeConfig.apiKey,
@@ -54,7 +59,10 @@ const AppStore = Reflux.createStore({
       }),
       totalPage: 0,
       currentPage: 0,
-      categories: Immutable.Set()
+      categories: Immutable.Set(),
+      products: Immutable.Set(),
+      organizationalConfig: {},
+      currentProduct: null
     });
   },
   validateEmail: function(mail) {
@@ -273,9 +281,31 @@ const AppStore = Reflux.createStore({
       true
     );
   },
+  searchingForCategory(category) {
+    return function(x) {
+      return x.categories.indexOf(category) != -1 || !category;
+    };
+  },
+  loadCategorizedProducts(id) {
+    let serchedProducts = products.filter(this.searchingForCategory(id));
+    this.updateState(
+      this.state.set("products", Immutable.Set(serchedProducts))
+    );
+  },
   loadData() {
     this.getCategories();
-    this.triggerState();
+    this.updateState(
+      this.state.set("organizationalConfig", organisationalConfig)
+    );
+  },
+  loadProduct(id) {
+    let currentProduct;
+    products.forEach(product => {
+      if (product.id == id) {
+        currentProduct = product;
+      }
+    });
+    this.updateState(this.state.set("currentProduct", currentProduct));
   }
 });
 

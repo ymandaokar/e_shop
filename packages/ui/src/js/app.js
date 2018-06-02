@@ -15,7 +15,6 @@ import AppActions from "./actions/actions.js";
 import AppStore from "./stores/store.js";
 import ScrollToTop from "./scrolltotop.js";
 import Products from "./components/products.js";
-import Product from "./components/product.js";
 import SearchProduct from "./components/searchproduct.js";
 import LandingPage from "./components/landingpage.js";
 import Footer from "./components/Footer.js";
@@ -62,6 +61,7 @@ class App extends Component {
     this.unsubscribe = AppStore.listen(state =>
       this.setState({ AppState: state })
     );
+    AppActions.loadData();
   }
   componentWillUnmount() {
     this.unsubscribe();
@@ -116,12 +116,14 @@ class App extends Component {
                     </Toolbar>
                   </AppBar>
                 </div>
-                <div className="appFrame">
+                <div
+                  className="appFrame fullHeight"
+                  style={{ backgroundColor: "#d3d3d324" }}
+                >
                   <ScrollToTop location={this.props.location}>
                     <Switch>
                       <Route exact path="/" component={LandingPage} />
                       <Route
-                        exact
                         path="/products"
                         render={props => (
                           <Products
@@ -136,7 +138,6 @@ class App extends Component {
                         path="/products/search/:key"
                         component={SearchProduct}
                       />
-                      <Route path="/products/:id" component={Product} />
                     </Switch>
                   </ScrollToTop>
                 </div>

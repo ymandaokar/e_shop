@@ -18,6 +18,7 @@ import history from "../helpers/history";
 import Down from "material-ui-icons/KeyboardArrowDown";
 import Up from "material-ui-icons/KeyboardArrowUp";
 import Drawer from "material-ui/Drawer";
+import AppActions from "../actions/actions.js";
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -42,7 +43,8 @@ class categories extends Component {
   }
   handleCategoryClick(id, redirect) {
     if (redirect) {
-      history.push({ pathname: `/products/search/${id}` });
+      AppActions.loadCategorizedProducts(id);
+      history.push({ pathname: `/products/category/${id}` });
     } else {
       if (this.props.isMobile) {
         let open = this.state.categories[id];

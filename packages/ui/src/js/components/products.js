@@ -5,6 +5,9 @@ import Home from "./Home.js";
 import Categories from "./categories.js";
 import AppActions from "../actions/actions.js";
 import AppStore from "../stores/store.js";
+import { Switch, Route } from "react-router";
+import Product from "./product.js";
+import CategorizedProducts from "./categorizedproducts.js";
 const styles = {
   root: {
     flexGrow: 1,
@@ -30,7 +33,6 @@ class Products extends Component {
     this.unsubscribe = AppStore.listen(state =>
       this.setState({ AppState: state })
     );
-    AppActions.loadData();
   }
 
   componentWillUnmount() {
@@ -43,15 +45,30 @@ class Products extends Component {
       return <div />;
     }
     let { isMobile } = this.context,
+      { themeColors } = this.props,
       categories = this.state.AppState.get("categories");
     return (
-      <div>
+      <div style={{ height: "100%" }}>
         <Categories
           categories={categories}
           isMobile={isMobile}
           {...this.props}
         />
-        <Home isMobile={isMobile} />
+        <div className="" style={{ marginTop: 55 }}>
+          <Switch>
+            <Route
+              exact
+              path="/products"
+              render={props => <Home {...props} isMobile={isMobile} />}
+            />
+            <Route
+              exact
+              path="/products/category/:id"
+              component={CategorizedProducts}
+            />
+            <Route exact path="/products/:id" component={Product} />
+          </Switch>
+        </div>
       </div>
     );
   }

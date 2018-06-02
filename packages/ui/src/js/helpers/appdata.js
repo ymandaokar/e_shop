@@ -770,7 +770,8 @@ exports.HeroData = {
 
 exports.organisationalConfig = {
   logo: "./extern/logo.jpeg",
-  title: "Tofa"
+  title: "Tofa",
+  currency: "$"
 };
 exports.categories = [
   {
@@ -849,5 +850,30 @@ exports.categories = [
     ParentCategoryId: "1",
     Tags: "",
     id: "7"
+  }
+];
+
+exports.products = [
+  {
+    id: "121",
+    name: "Lenovo Vibe X3",
+    description: "Mobile phone",
+    images: [
+      "https://gadgetsloud.com/wp-content/uploads/2016/01/Lenovo-Vibe-X3.jpg"
+    ],
+    categories: ["1", "6"],
+    price: 20000,
+    discount: 30
+  },
+  {
+    id: "122",
+    name: "Moto G5 (White)",
+    description: "Mobile phone",
+    images: [
+      "http://cdn.techpp.com/wp-content/uploads/2017/04/moto-g5-review-1.jpg"
+    ],
+    categories: ["1", "6"],
+    price: 14500,
+    discount: 10
   }
 ];

@@ -1,6 +1,8 @@
 import Reflux from "reflux-core";
 
 const Actions = Reflux.createActions([
+  "loadCategorizedProducts",
+  "loadSearchedProducts",
   "loadProducts",
   "loadProduct",
   "loadData",
