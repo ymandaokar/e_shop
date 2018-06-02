@@ -38,14 +38,19 @@ class CategorizedProducts extends Component {
       return <ProductsLoader />;
     }
     let { isMobile } = this.context,
-      products = this.state.AppState.get("products");
+      products = this.state.AppState.get("products"),
+      organizationalConfig = this.state.AppState.get("organizationalConfig");
     if (!products.size) {
       return <NoResult />;
     }
     return (
       <div style={{ display: "flex" }}>
         {products.map(product => (
-          <ProductCard product={product} key={product.id} />
+          <ProductCard
+            product={product}
+            key={product.id}
+            currency={organizationalConfig.currency}
+          />
         ))}
       </div>
     );

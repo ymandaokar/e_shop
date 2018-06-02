@@ -40,7 +40,7 @@ class ProductCard extends Component {
     history.push({ pathname: `/products/${id}` });
   }
   render() {
-    let { product, classes } = this.props;
+    let { product, classes, currency } = this.props;
     return (
       <div style={{ margin: 10, width: 350 }}>
         <Card
@@ -61,7 +61,7 @@ class ProductCard extends Component {
             title={truncate(product.name, {
               length: 15
             })}
-            subheader={product.price}
+            subheader={`${currency} ${product.price}`}
           />
           <CardMedia
             className={classes.media}

@@ -771,7 +771,7 @@ exports.HeroData = {
 exports.organisationalConfig = {
   logo: "./extern/logo.jpeg",
   title: "Tofa",
-  currency: "$"
+  currency: "₹"
 };
 exports.categories = [
   {
