@@ -183,46 +183,54 @@ class categories extends Component {
                                 ))}
                             </button>
                           </Target>
-                          {!!category.children.length && (
-                            <Popper
-                              placement="bottom-end"
-                              eventsEnabled={category.id == this.state.category}
-                              className={classNames({
-                                [classes.popperClose]: !(
+                          {!!category.children.length &&
+                            (category.id == this.state.category && (
+                              <Popper
+                                placement="bottom-end"
+                                eventsEnabled={
                                   category.id == this.state.category
-                                )
-                              })}
-                            >
-                              <ClickAwayListener onClickAway={this.handleClose}>
-                                <Grow
-                                  in={category.id == this.state.category}
-                                  id="menu-list-grow"
-                                  style={{ transformOrigin: "0 0 0" }}
+                                }
+                                className={classNames({
+                                  [classes.popperClose]: !(
+                                    category.id == this.state.category
+                                  )
+                                })}
+                              >
+                                <ClickAwayListener
+                                  onClickAway={this.handleClose}
                                 >
-                                  <Paper>
-                                    <MenuList role="menu" style={{ margin: 6 }}>
-                                      {category.children.map(child => {
-                                        return (
-                                          <MenuItem
-                                            key={child.id}
-                                            onClick={this.handleCategoryClick.bind(
-                                              this,
-                                              child.id,
-                                              true
-                                            )}
-                                            className="homeCatButton"
-                                            style={{ fontSize: "80%" }}
-                                          >
-                                            {child.Name}
-                                          </MenuItem>
-                                        );
-                                      })}
-                                    </MenuList>
-                                  </Paper>
-                                </Grow>
-                              </ClickAwayListener>
-                            </Popper>
-                          )}
+                                  <Grow
+                                    in={category.id == this.state.category}
+                                    id="menu-list-grow"
+                                    style={{ transformOrigin: "0 0 0" }}
+                                  >
+                                    <Paper>
+                                      <MenuList
+                                        role="menu"
+                                        style={{ margin: 6 }}
+                                      >
+                                        {category.children.map(child => {
+                                          return (
+                                            <MenuItem
+                                              key={child.id}
+                                              onClick={this.handleCategoryClick.bind(
+                                                this,
+                                                child.id,
+                                                true
+                                              )}
+                                              className="homeCatButton"
+                                              style={{ fontSize: "80%" }}
+                                            >
+                                              {child.Name}
+                                            </MenuItem>
+                                          );
+                                        })}
+                                      </MenuList>
+                                    </Paper>
+                                  </Grow>
+                                </ClickAwayListener>
+                              </Popper>
+                            ))}
                         </Manager>
                       </div>
                     );

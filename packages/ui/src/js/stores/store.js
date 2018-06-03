@@ -3,7 +3,7 @@ import createStore from "reflux-core/lib/createStore";
 import Immutable from "immutable";
 import Actions from "../actions/actions.js";
 import ObjectID from "bson-objectid";
-import { filter } from "lodash-es";
+import { filter, omit } from "lodash-es";
 import axios from "axios";
 import {
   stripeConfig,
@@ -18,6 +18,7 @@ import {
   organisationalConfig
 } from "../helpers/appdata.js";
 import SearchProduct from "../components/searchproduct.js";
+import preciseRound from "../helpers/preciseround.js";
 const paymentGatewayTypes = {
   stripe: {
     token: stripeConfig.apiKey,
@@ -62,7 +63,9 @@ const AppStore = Reflux.createStore({
       categories: Immutable.Set(),
       products: Immutable.Set(),
       organizationalConfig: {},
-      currentProduct: null
+      currentProduct: null,
+      cartItems: Immutable.Map(),
+      subTotal: 0.0
     });
   },
   validateEmail: function(mail) {
@@ -294,6 +297,14 @@ const AppStore = Reflux.createStore({
   },
   loadData() {
     this.getCategories();
+    if (localStorage.getItem("cart")) {
+      this.updateState(
+        this.state.set(
+          "cartItems",
+          Immutable.Map(JSON.parse(localStorage.getItem("cart")))
+        )
+      );
+    }
     this.updateState(
       this.state.set("organizationalConfig", organisationalConfig)
     );
@@ -306,6 +317,43 @@ const AppStore = Reflux.createStore({
       }
     });
     this.updateState(this.state.set("currentProduct", currentProduct));
+  },
+  updateSubtotal(suppress) {
+    let subTotal = 0;
+    this.state.get("cartItems").forEach(item => {
+      subTotal =
+        subTotal +
+        preciseRound(item.quantity * item.price * item.discount / 100);
+    });
+    this.updateState(this.state.set("subTotal", subTotal), suppress);
+  },
+  addToCart(item, quantity) {
+    let product = this.state.getIn(["cartItems", item.id]);
+    if (product) {
+      product.quantity = product.quantity + quantity;
+    } else {
+      let [image] = item.images;
+      item = omit(item, ["images", "categories", "description"]);
+      item.image = image;
+      item.quantity = quantity;
+      product = item;
+    }
+    this.updateState(this.state.setIn(["cartItems", product.id], product));
+    let cartItems = this.state.get("cartItems");
+    localStorage.setItem(
+      "cart",
+      cartItems.size ? JSON.stringify(cartItems.toJS()) : ""
+    );
+    this.updateSubtotal();
+  },
+  removeFromCart(id) {
+    this.updateState(this.state.deleteIn(["cartItems", id]));
+    let cartItems = this.state.get("cartItems");
+    localStorage.setItem(
+      "cart",
+      cartItems.size ? JSON.stringify(cartItems.toJS()) : ""
+    );
+    this.updateSubtotal();
   }
 });
 

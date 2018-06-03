@@ -20,6 +20,8 @@ import LandingPage from "./components/landingpage.js";
 import Footer from "./components/Footer.js";
 import { ThemeContext, themes } from "./helpers/theme-context";
 import Avatar from "material-ui/Avatar";
+import ShoppingCart from "material-ui-icons/ShoppingCart";
+import Cart from "./components/cart.js";
 const styles = {
   root: {
     flexGrow: 1,
@@ -76,7 +78,8 @@ class App extends Component {
       organizationalConfig =
         (this.state.AppState &&
           this.state.AppState.get("organizationalConfig")) ||
-        {};
+        {},
+      cartItems = this.state.AppState && this.state.AppState.get("cartItems");
     return (
       <div className={classes.root}>
         <ThemeContext.Provider
@@ -117,6 +120,12 @@ class App extends Component {
                       >
                         {organizationalConfig.title}
                       </Typography>
+                      <Cart
+                        themeColors={themeColors}
+                        isMobile={isMobile}
+                        cartItems={cartItems}
+                        currency={organizationalConfig.currency}
+                      />
                       <IconButton aria-haspopup="true" color="inherit">
                         <AccountCircle />
                       </IconButton>

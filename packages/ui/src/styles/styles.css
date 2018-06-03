@@ -383,7 +383,6 @@ header .container {
 
 .action-block {
   background: #fff;
-  position: absolute;
   bottom: 0;
   padding: 16px;
   width: 100%;
@@ -475,6 +474,7 @@ header .container {
   font-size: 22px;
   color: #ccc;
   text-align: center;
+  cursor: pointer;
 }
 .cart-item .product-remove:hover {
   color: #e23d3d;
@@ -1862,6 +1862,7 @@ form {
 .addToCrdButton {
   color: #fff;
   background-color: #0072c6;
+  cursor: pointer;
 }
 .carousel-status {
   display: none;
@@ -2580,3 +2581,10 @@ label {
   color: #e10000;
   cursor: pointer;
 }
+.cart-product{
+  height: 300px;
+  width: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+

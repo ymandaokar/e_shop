@@ -17,6 +17,7 @@ class Product extends Component {
       buttonLabel: "ADD TO CART",
       currentQuantity: 1
     };
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -33,13 +34,9 @@ class Product extends Component {
     this.unsubscribe();
   }
 
-  addToCart(product, currency, event) {
+  addToCart(product, event) {
     event.stopPropagation();
-    this.props.addToCart({
-      product,
-      quantity: parseInt(this.state.currentQuantity),
-      currency
-    });
+    AppActions.addToCart(product, parseInt(this.state.currentQuantity));
     this.setState(
       {
         buttonLabel: "✔ ADDED",
@@ -50,7 +47,7 @@ class Product extends Component {
           this.setState({
             buttonLabel: "ADD TO CART"
           });
-        }, 3000);
+        }, 2000);
       }
     );
   }
@@ -175,7 +172,6 @@ class Product extends Component {
                     <div className="">
                       <div className="btn-wrap bm-35">
                         <a
-                          href="#"
                           title="Add to cart"
                           className={"btn bdr addToCrdButton"}
                           style={
@@ -193,7 +189,7 @@ class Product extends Component {
                           onClick={
                             this.state.buttonLabel != "ADD TO CART"
                               ? () => {}
-                              : this.addToCart.bind(this, product, currency)
+                              : this.addToCart.bind(this, product)
                           }
                         >
                           {this.state.buttonLabel != "ADD TO CART" ? (
