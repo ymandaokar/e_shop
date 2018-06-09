@@ -291,20 +291,32 @@ const AppStore = Reflux.createStore({
       return;
     });
   },
-  loadData() {
-    this.getCategories().then(() => {
-      if (localStorage.getItem("cart")) {
-        this.updateState(
-          this.state.set(
-            "cartItems",
-            Immutable.Map(JSON.parse(localStorage.getItem("cart")))
-          )
-        );
-      }
-      this.updateState(
-        this.state.set("organizationalConfig", organisationalConfig)
-      );
+  getOrganisationalConfig() {
+    let url = `/organization/configuration`;
+    return axios({
+      method: "GET",
+      url
+    }).then(response => {
+      console.debug("organizationalConfig", response.data);
+      this.updateState(this.state.set("organizationalConfig", response.data));
+      return;
     });
+  },
+  loadData() {
+    this.getOrganisationalConfig()
+      .then(() => {
+        return this.getCategories();
+      })
+      .then(() => {
+        if (localStorage.getItem("cart")) {
+          this.updateState(
+            this.state.set(
+              "cartItems",
+              Immutable.Map(JSON.parse(localStorage.getItem("cart")))
+            )
+          );
+        }
+      });
   },
   loadProduct(id) {
     const url = `/productitems`;

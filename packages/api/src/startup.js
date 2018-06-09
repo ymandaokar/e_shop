@@ -342,6 +342,19 @@ function startExpress() {
           });
       });
 
+      app.get("/organization/configuration", (req, res, next) => {
+        getNewDB(commonDB)
+          .db.find({
+            selector: { docType: { $eq: "adminConfig" } }
+          })
+          .then(result => {
+            res.status(200).json(result.docs[0] || {});
+          })
+          .catch(err => {
+            next(err);
+          });
+      });
+
       app.post("/productitems", (req, res, next) => {
         let { skip, limit, sort, selector, fields } = req.body;
         selector = selector

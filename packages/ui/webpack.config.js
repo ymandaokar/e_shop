@@ -113,6 +113,10 @@ module.exports = {
         target: process.env.surveySource || "http://localhost:8080",
         secure: false
       },
+      "/organization": {
+        target: process.env.surveySource || "http://localhost:8080",
+        secure: false
+      },
       "/invoice": {
         target: process.env.surveySource || "http://localhost:8080",
         secure: false
