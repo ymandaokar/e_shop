@@ -23,7 +23,8 @@ let fs = require("fs"),
     tempImagesPath,
     dbServer,
     adminRole,
-    serverLink
+    serverLink,
+    commonDB
   } = require("./appsettings.js"),
   easyimg = require("easyimage"),
   upload = multer(tempImagesPath),
@@ -326,6 +327,41 @@ function startExpress() {
 
       //plugin body-parser
       app.use(bodyParser.json());
+
+      //apis
+      app.get("/categories", (req, res, next) => {
+        getNewDB(commonDB)
+          .db.find({
+            selector: { docType: { $eq: "category" } }
+          })
+          .then(categories => {
+            res.status(200).json(categories);
+          })
+          .catch(err => {
+            next(err);
+          });
+      });
+
+      app.post("/productitems", (req, res, next) => {
+        let { skip, limit, sort, selector, fields } = req.body;
+        selector = selector
+          ? { $and: [{ docType: { $eq: "product" } }, selector] }
+          : { docType: { $eq: "product" } };
+        getNewDB(commonDB)
+          .db.find({
+            selector,
+            fields,
+            skip,
+            sort,
+            limit
+          })
+          .then(products => {
+            res.status(200).json(products);
+          })
+          .catch(err => {
+            next(err);
+          });
+      });
 
       ServerLogger.info("Applying cache-headers...");
 

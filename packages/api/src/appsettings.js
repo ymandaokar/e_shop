@@ -7,7 +7,7 @@ const slackOptions = require("./slackoptions.js"),
 module.exports = {
   dbProtocol: "http://",
   dbHost,
-  appTitle: "quizMe",
+  appTitle: "tofa",
   appLink: `${serverHostName}/#/`,
   serverLink: `${serverHostName}`,
   buildPath: "build",
@@ -85,5 +85,6 @@ module.exports = {
       level: "info"
     },
     slackOptions
-  }
+  },
+  commonDB: "tofaadmin"
 };

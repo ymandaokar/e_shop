@@ -9,7 +9,8 @@ import {
   stripeConfig,
   braintree,
   paypal,
-  productsLimit
+  productsLimit,
+  siteURL
 } from "../appsettings.js";
 import PaymentGatewayFactory from "../helpers/paymentgatwatfactory.js";
 import {
@@ -35,11 +36,11 @@ function addSubCatagorisToCategories(categories, subCategories) {
   return categories.map(category => {
     category.children = filter(
       subCategories,
-      obj => obj.ParentCategoryId == category.id
+      obj => obj.parentCategoryId == category._id
     );
     subCategories = filter(
       subCategories,
-      obj => obj.ParentCategoryId != category.id
+      obj => obj.parentCategoryId != category._id
     );
     return category;
   });
@@ -241,48 +242,32 @@ const AppStore = Reflux.createStore({
   },
   getCategories() {
     //For Localhost use the below url
-    // const url = `${siteURL}/svc/api/Categories`;
+    const url = `/categories`;
 
-    // return axios({
-    //   method: "get",
-    //   url
-    // }).then(response => {
-    //   let categories = [],
-    //     subCategories = [];
-    //   response.data.forEach(category => {
-    //     if (!category.IsActive) {
-    //       return;
-    //     }
-    //     if (!category.ParentCategoryId) {
-    //       categories.push(category);
-    //     } else {
-    //       subCategories.push(category);
-    //     }
-    //   });
-    //   categories = addSubCatagorisToCategories(categories, subCategories);
-    //   this.updateState(
-    //     this.state.set("categories", Immutable.Set(categories)),
-    //     true
-    //   );
-    //   return;
-    // });
-    let Categories = [],
-      subCategories = [];
-    categories.forEach(category => {
-      if (!category.IsActive) {
-        return;
-      }
-      if (!category.ParentCategoryId) {
-        Categories.push(category);
-      } else {
-        subCategories.push(category);
-      }
+    return axios({
+      method: "GET",
+      url
+    }).then(response => {
+      console.debug("categories", response.data);
+      let Categories = [],
+        subCategories = [];
+      response.data.docs.forEach(category => {
+        if (!category.isActive) {
+          return;
+        }
+        if (!category.parentCategoryId) {
+          Categories.push(category);
+        } else {
+          subCategories.push(category);
+        }
+      });
+      Categories = addSubCatagorisToCategories(Categories, subCategories);
+      this.updateState(
+        this.state.set("categories", Immutable.Set(Categories)),
+        true
+      );
+      return;
     });
-    Categories = addSubCatagorisToCategories(Categories, subCategories);
-    this.updateState(
-      this.state.set("categories", Immutable.Set(Categories)),
-      true
-    );
   },
   searchingForCategory(category) {
     return function(x) {
@@ -290,45 +275,64 @@ const AppStore = Reflux.createStore({
     };
   },
   loadCategorizedProducts(id) {
-    let serchedProducts = products.filter(this.searchingForCategory(id));
-    this.updateState(
-      this.state.set("products", Immutable.Set(serchedProducts))
-    );
+    const url = `/productitems`;
+
+    return axios({
+      method: "POST",
+      url,
+      data: {
+        selector: { categories: { $elemMatch: { $eq: id } } }
+      }
+    }).then(response => {
+      console.debug("products", response.data);
+      this.updateState(
+        this.state.set("products", Immutable.Set(response.data.docs))
+      );
+      return;
+    });
   },
   loadData() {
-    this.getCategories();
-    if (localStorage.getItem("cart")) {
+    this.getCategories().then(() => {
+      if (localStorage.getItem("cart")) {
+        this.updateState(
+          this.state.set(
+            "cartItems",
+            Immutable.Map(JSON.parse(localStorage.getItem("cart")))
+          )
+        );
+      }
       this.updateState(
-        this.state.set(
-          "cartItems",
-          Immutable.Map(JSON.parse(localStorage.getItem("cart")))
-        )
+        this.state.set("organizationalConfig", organisationalConfig)
       );
-    }
-    this.updateState(
-      this.state.set("organizationalConfig", organisationalConfig)
-    );
+    });
   },
   loadProduct(id) {
-    let currentProduct;
-    products.forEach(product => {
-      if (product.id == id) {
-        currentProduct = product;
+    const url = `/productitems`;
+
+    return axios({
+      method: "POST",
+      url,
+      data: {
+        selector: { _id: { $eq: id } }
       }
+    }).then(response => {
+      console.debug("product", response.data);
+      let [currentProduct] = response.data.docs;
+      this.updateState(this.state.set("currentProduct", currentProduct));
+      return;
     });
-    this.updateState(this.state.set("currentProduct", currentProduct));
   },
   updateSubtotal(suppress) {
     let subTotal = 0;
     this.state.get("cartItems").forEach(item => {
       subTotal =
         subTotal +
-        preciseRound(item.quantity * item.price * item.discount / 100);
+        preciseRound((item.quantity * item.price * item.discount) / 100);
     });
     this.updateState(this.state.set("subTotal", subTotal), suppress);
   },
-  addToCart(item, quantity) {
-    let product = this.state.getIn(["cartItems", item.id]);
+  addToCart(item, quantity = 1) {
+    let product = this.state.getIn(["cartItems", item._id]);
     if (product) {
       product.quantity = product.quantity + quantity;
     } else {
@@ -338,7 +342,7 @@ const AppStore = Reflux.createStore({
       item.quantity = quantity;
       product = item;
     }
-    this.updateState(this.state.setIn(["cartItems", product.id], product));
+    this.updateState(this.state.setIn(["cartItems", product._id], product));
     let cartItems = this.state.get("cartItems");
     localStorage.setItem(
       "cart",

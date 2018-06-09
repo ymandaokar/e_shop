@@ -50,7 +50,7 @@ class CategorizedProducts extends Component {
             {products.map(product => (
               <ProductCard
                 product={product}
-                key={product.id}
+                key={product._id}
                 currency={organizationalConfig.currency}
               />
             ))}

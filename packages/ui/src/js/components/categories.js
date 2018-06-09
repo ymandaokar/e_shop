@@ -79,22 +79,22 @@ class categories extends Component {
                 <List>
                   {categories.map(category => {
                     return (
-                      <List key={category.id}>
+                      <List key={category._id}>
                         <ListItem
                           button
                           onClick={this.handleCategoryClick.bind(
                             this,
-                            category.id,
+                            category._id,
                             !category.children.length
                           )}
                         >
                           <ListItemText
                             disableTypography={true}
                             className={classes.primary}
-                            primary={category.Name}
+                            primary={category.name}
                           />
                           {!!category.children.length &&
-                            (this.state.categories[category.id] ? (
+                            (this.state.categories[category._id] ? (
                               <Up />
                             ) : (
                               <Down />
@@ -102,7 +102,7 @@ class categories extends Component {
                         </ListItem>
                         {!!category.children.length && (
                           <Collapse
-                            in={this.state.categories[category.id]}
+                            in={this.state.categories[category._id]}
                             timeout="auto"
                             unmountOnExit
                           >
@@ -112,17 +112,17 @@ class categories extends Component {
                                   <ListItem
                                     button
                                     className={classes.nested}
-                                    key={child.id}
+                                    key={child._id}
                                     onClick={this.handleCategoryClick.bind(
                                       this,
-                                      child.id,
+                                      child._id,
                                       true
                                     )}
                                   >
                                     <ListItemText
                                       disableTypography={true}
                                       className={classes.primary}
-                                      primary={child.Name}
+                                      primary={child.name}
                                     />
                                   </ListItem>
                                 );
@@ -158,7 +158,7 @@ class categories extends Component {
                 <div className="">
                   {categories.map(category => {
                     return (
-                      <div className="homeCategory" key={category.id}>
+                      <div className="homeCategory" key={category._id}>
                         <Manager>
                           <Target>
                             <button
@@ -166,13 +166,13 @@ class categories extends Component {
                               style={{ display: "flex" }}
                               onClick={this.handleCategoryClick.bind(
                                 this,
-                                category.id,
+                                category._id,
                                 !category.children.length
                               )}
                             >
-                              {category.Name}
+                              {category.name}
                               {!!category.children.length &&
-                                (category.id == this.state.category ? (
+                                (category._id == this.state.category ? (
                                   <Up
                                     style={{ marginTop: -3, marginLeft: 5 }}
                                   />
@@ -184,15 +184,15 @@ class categories extends Component {
                             </button>
                           </Target>
                           {!!category.children.length &&
-                            (category.id == this.state.category && (
+                            (category._id == this.state.category && (
                               <Popper
                                 placement="bottom-end"
                                 eventsEnabled={
-                                  category.id == this.state.category
+                                  category._id == this.state.category
                                 }
                                 className={classNames({
                                   [classes.popperClose]: !(
-                                    category.id == this.state.category
+                                    category._id == this.state.category
                                   )
                                 })}
                               >
@@ -200,7 +200,7 @@ class categories extends Component {
                                   onClickAway={this.handleClose}
                                 >
                                   <Grow
-                                    in={category.id == this.state.category}
+                                    in={category._id == this.state.category}
                                     id="menu-list-grow"
                                     style={{ transformOrigin: "0 0 0" }}
                                   >
@@ -212,16 +212,16 @@ class categories extends Component {
                                         {category.children.map(child => {
                                           return (
                                             <MenuItem
-                                              key={child.id}
+                                              key={child._id}
                                               onClick={this.handleCategoryClick.bind(
                                                 this,
-                                                child.id,
+                                                child._id,
                                                 true
                                               )}
                                               className="homeCatButton"
                                               style={{ fontSize: "80%" }}
                                             >
-                                              {child.Name}
+                                              {child.name}
                                             </MenuItem>
                                           );
                                         })}

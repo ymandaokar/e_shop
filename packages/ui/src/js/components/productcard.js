@@ -157,7 +157,7 @@ class ProductCard extends Component {
           />
           {isMobile ? (
             <CardMedia
-              onClick={this.handleProductClick.bind(this, product.id)}
+              onClick={this.handleProductClick.bind(this, product._id)}
               className={classes.media}
               image={product.images[0]}
               title={product.name}
@@ -165,11 +165,11 @@ class ProductCard extends Component {
           ) : (
             <CardContent
               className={classes.content}
-              onClick={this.handleProductClick.bind(this, product.id)}
+              onClick={this.handleProductClick.bind(this, product._id)}
             >
               <ButtonBase
                 focusRipple
-                key={product.id}
+                key={product._id}
                 className={classes.image}
                 focusVisibleClassName={classes.focusVisible}
                 style={{

@@ -62,7 +62,7 @@ class Cart extends Component {
     return cartItems
       .map((product, id) => {
         return (
-          <div className="" key={product.id}>
+          <div className="" key={product._id}>
             <div className="">
               <li className="cart-item" key={product.name}>
                 <img className="product-image" src={product.image} />
@@ -81,7 +81,7 @@ class Cart extends Component {
                 </div>
                 <a
                   className="product-remove"
-                  onClick={AppActions.removeFromCart.bind(this, product.id)}
+                  onClick={AppActions.removeFromCart.bind(this, product._id)}
                 >
                   ×
                 </a>

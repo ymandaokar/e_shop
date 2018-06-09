@@ -1,24 +1,21 @@
-const surveyAdminDoc = require("./surveyadmindoc"),
+const Promise = require("bluebird"),
+  surveyAdminDoc = require("./surveyadmindoc"),
   getNewDB = require("./getnewdb.js"),
   getError = require("../helpers/getformattederror.js"),
-  { ServerErrorLogger } = require("../utility/logger.js");
+  settleAll = require("./settleAll/index.js"),
+  indexes = require("./indexes/admin.js"),
+  { forIn } = require("lodash"),
+  { commonDB } = require("../appsettings.js"),
+  { ServerErrorLogger, ServerLogger } = require("../utility/logger.js");
 
 module.exports = () => {
-  let { db } = getNewDB("surveyadmin");
-  return db
-    .find({
-      selector: { docType: "defaultemailtemplate" },
-      fields: ["_id"]
-    })
-    .then(result => {
-      if (result.docs && result.docs.length) {
-        return;
-      }
-      return db.put(surveyAdminDoc);
-    })
-    .catch(err => {
-      ServerErrorLogger.error(
-        `\`initializeadmindb.js\`\n\`\`\`Error: ${getError(err)}\`\`\``
-      );
-    });
+  let { db } = getNewDB(commonDB);
+  let promises = [];
+  forIn(indexes, (value, key) => {
+    promises.push(Promise.try(() => db.createIndex(value)));
+  });
+  return settleAll(promises).then(result => {
+    ServerLogger.info("Index created", result);
+    return db;
+  });
 };
