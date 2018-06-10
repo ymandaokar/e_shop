@@ -3,6 +3,7 @@ let fs = require("fs"),
   stream = require("stream"),
   SuperLogin = require("./helpers/superlogin/lib/index.js"),
   Promise = require("bluebird"),
+  ObjectID = require("bson-objectid"),
   readFile = Promise.promisify(require("fs").readFile),
   request = require("request"),
   bodyParser = require("body-parser"),
@@ -370,6 +371,52 @@ function startExpress() {
           })
           .then(products => {
             res.status(200).json(products);
+          })
+          .catch(err => {
+            next(err);
+          });
+      });
+
+      app.post("/invoice", (req, res, next) => {
+        let { items } = req.body;
+        getNewDB(commonDB)
+          .db.allDocs({
+            keys: Object.keys(items),
+            include_docs: true
+          })
+          .then(result => {
+            let invoice = {};
+            invoice.subtotal = 0;
+            invoice.items = [];
+            result.rows.forEach(value => {
+              let item = value.doc,
+                actualcost = item.price * items[item._id],
+                discountcost = item.discount
+                  ? (actualcost * item.discount) / 100
+                  : 0,
+                cost = actualcost - discountcost;
+              invoice.items.push({
+                _id: item._id,
+                name: item.name,
+                discount: item.discount,
+                discountcost,
+                unitcost: item.price,
+                quantity: items[item._id],
+                actualcost,
+                cost
+              });
+              invoice.subtotal += cost;
+            });
+            invoice.charges = {};
+            if (invoice.subtotal) {
+              invoice.charges["Delivery charge"] =
+                (invoice.subtotal * 10) / 100;
+            }
+            invoice.net = invoice.subtotal;
+            Object.keys(invoice.charges).forEach(id => {
+              invoice.net += invoice.charges[id];
+            });
+            res.status(200).json(invoice);
           })
           .catch(err => {
             next(err);

@@ -15,13 +15,13 @@ import AppActions from "./actions/actions.js";
 import AppStore from "./stores/store.js";
 import ScrollToTop from "./scrolltotop.js";
 import Products from "./components/products.js";
-import SearchProduct from "./components/searchproduct.js";
 import LandingPage from "./components/landingpage.js";
 import Footer from "./components/Footer.js";
 import { ThemeContext, themes } from "./helpers/theme-context";
 import Avatar from "material-ui/Avatar";
 import ShoppingCart from "material-ui-icons/ShoppingCart";
 import Cart from "./components/cart.js";
+import Checkout from "./components/checkout.js";
 const styles = {
   root: {
     flexGrow: 1,
@@ -79,6 +79,7 @@ class App extends Component {
         (this.state.AppState &&
           this.state.AppState.get("organizationalConfig")) ||
         {},
+      categories = this.state.AppState && this.state.AppState.get("categories"),
       cartItems = this.state.AppState && this.state.AppState.get("cartItems");
     return (
       <div className={classes.root}>
@@ -121,6 +122,7 @@ class App extends Component {
                         {organizationalConfig.title}
                       </Typography>
                       <Cart
+                        {...this.props}
                         themeColors={themeColors}
                         isMobile={isMobile}
                         cartItems={cartItems}
@@ -144,16 +146,13 @@ class App extends Component {
                         render={props => (
                           <Products
                             {...this.props}
+                            categories={categories}
                             openDrawer={this.state.openDrawer}
                             toggleDrawer={this.toggleDrawer.bind(this)}
                           />
                         )}
                       />
-                      <Route
-                        exact
-                        path="/products/search/:key"
-                        component={SearchProduct}
-                      />
+                      <Route path="/checkout" component={Checkout} />
                     </Switch>
                   </ScrollToTop>
                 </div>

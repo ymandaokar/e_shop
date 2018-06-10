@@ -20,6 +20,7 @@ import {
 } from "../helpers/appdata.js";
 import SearchProduct from "../components/searchproduct.js";
 import preciseRound from "../helpers/preciseround.js";
+import history from "../helpers/history.js";
 const paymentGatewayTypes = {
   stripe: {
     token: stripeConfig.apiKey,
@@ -370,6 +371,28 @@ const AppStore = Reflux.createStore({
       cartItems.size ? JSON.stringify(cartItems.toJS()) : ""
     );
     this.updateSubtotal();
+  },
+  getInvoice() {
+    let url = "/invoice",
+      cartItems = this.state.get("cartItems"),
+      items = {};
+    cartItems.forEach((item, id) => {
+      items[id] = item.quantity;
+    });
+    return axios({
+      method: "POST",
+      url,
+      data: { items }
+    }).then(response => {
+      console.debug("invoice", response.data);
+      this.updateState(this.state.set("invoice", response.data));
+      return;
+    });
+  },
+  checkoutProcess() {
+    this.getInvoice().then(() => {
+      history.push({ pathname: "/checkout/login" });
+    });
   }
 });
 

@@ -23,7 +23,7 @@ class OrderSummary extends Component {
     ).toFixed(decimals);
   }
   render() {
-    let { isMobile, invoice, themeColors } = this.props,
+    let { isMobile, invoice, themeColors, currency } = this.props,
       charges = [],
       { pathname } = this.props.location;
     invoice &&
@@ -45,7 +45,7 @@ class OrderSummary extends Component {
                   "col-xs font90Pr end-xs contextSectionDescriptionColor"
                 }
               >
-                {`${this.props.currency} ${this.preciseRound(value)}`}
+                {`${currency} ${this.preciseRound(value)}`}
               </div>
             </div>
           );
@@ -96,13 +96,12 @@ class OrderSummary extends Component {
                           : "col-xs start-xs tableLable font90Pr"
                       }
                     >
-                      {product.productName}
+                      {product.name}
                     </div>
                     <div
                       className={"col-xs tableLable font90Pr"}
-                    >{`${product.currency ||
-                      this.props.currency} ${this.preciseRound(
-                      this.preciseRound(product.unitPrice)
+                    >{`${currency} ${this.preciseRound(
+                      this.preciseRound(product.unitcost)
                     )}`}</div>
                     <div className={"col-xs tableLable  font90Pr"}>
                       {product.quantity}
@@ -112,10 +111,7 @@ class OrderSummary extends Component {
                     </div>
                     <div
                       className={"col-xs tableLable end-xs font90Pr"}
-                    >{`${product.currency ||
-                      this.props.currency} ${this.preciseRound(
-                      product.netPrice
-                    )}`}</div>
+                    >{`${currency} ${this.preciseRound(product.cost)}`}</div>
                   </div>
                 );
               })}
@@ -131,8 +127,8 @@ class OrderSummary extends Component {
                 {"Sub total"}
               </div>
               <div className={"col-xs end-xs contextSectionDescriptionColor"}>
-                {`${this.props.currency} ${invoice &&
-                  this.preciseRound(invoice.totalAmount)}`}
+                {`${currency} ${invoice &&
+                  this.preciseRound(invoice.subtotal)}`}
               </div>
             </div>
             {charges}
@@ -144,8 +140,7 @@ class OrderSummary extends Component {
                 {"Order total"}
               </div>
               <div className={"col-xs end-xs contextSectionDescriptionColor"}>
-                {`${this.props.currency} ${invoice &&
-                  this.preciseRound(invoice.net)}`}
+                {`${currency} ${invoice && this.preciseRound(invoice.net)}`}
               </div>
             </div>
           </div>

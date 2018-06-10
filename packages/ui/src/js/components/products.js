@@ -8,6 +8,7 @@ import AppStore from "../stores/store.js";
 import { Switch, Route } from "react-router";
 import Product from "./product.js";
 import CategorizedProducts from "./categorizedproducts.js";
+import SearchProduct from "./searchproduct.js";
 const styles = {
   root: {
     flexGrow: 1,
@@ -41,12 +42,8 @@ class Products extends Component {
   }
 
   render() {
-    if (!this.state.AppState) {
-      return <div />;
-    }
     let { isMobile } = this.context,
-      { themeColors } = this.props,
-      categories = this.state.AppState.get("categories");
+      { themeColors, categories } = this.props;
     return (
       <div style={{ height: "100%" }}>
         <Categories
@@ -67,6 +64,11 @@ class Products extends Component {
               component={CategorizedProducts}
             />
             <Route exact path="/products/:id" component={Product} />
+            <Route
+              exact
+              path="/products/search/:key"
+              component={SearchProduct}
+            />
           </Switch>
         </div>
       </div>

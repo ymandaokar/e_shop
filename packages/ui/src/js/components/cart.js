@@ -53,10 +53,12 @@ class Cart extends Component {
     let { open } = this.state;
     this.setState({ open: !open });
   }
-  handleClose() {
-    this.setState({ open: false });
+  handleClose(evt, fn) {
+    this.setState({ open: false }, fn);
   }
-  handleProccedClick() {}
+  handleProccedClick() {
+    this.handleClose(null, AppActions.checkoutProcess);
+  }
   getCartItems() {
     let { cartItems, currency, isMobile } = this.props;
     return cartItems
