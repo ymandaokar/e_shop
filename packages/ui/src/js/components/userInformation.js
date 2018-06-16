@@ -219,6 +219,10 @@ class UserInformation extends Component {
     this.setState({ showMore: false });
   }
   render() {
+    let { activeStep, history } = this.props;
+    if (activeStep != 1) {
+      history.push({ pathname: "/checkout/login" });
+    }
     let {
         isMobile,
         fetchingUser,

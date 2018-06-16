@@ -432,8 +432,8 @@ const AppStore = Reflux.createStore({
     this.updateState(this.state.set("userInfo", userInfo), suppress);
   },
   processInvoice() {
-    this.nextActiveStep();
     this.getInvoice().then(() => {
+      this.nextActiveStep();
       history.push({ pathname: "/checkout/ordersummary" });
     });
   }

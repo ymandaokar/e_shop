@@ -76,6 +76,10 @@ class OrderSummary extends Component {
     );
   }
   render() {
+    let { activeStep, history } = this.props;
+    if (activeStep != 2) {
+      history.push({ pathname: "/checkout/login" });
+    }
     let { isMobile, invoice, themeColors, currency } = this.props,
       charges = [],
       { pathname } = this.props.location;
