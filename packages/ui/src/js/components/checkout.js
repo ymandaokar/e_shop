@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
+import Stepper from "material-ui/Stepper/Stepper";
+import Step from "material-ui/Stepper/Step";
+import StepLabel from "material-ui/Stepper/StepLabel";
+import Button from "material-ui/Button";
 import AppActions from "../actions/actions.js";
-//import AppStore from "../stores/store.js";
+import AppStore from "../stores/store.js";
 import { Switch, Route } from "react-router";
 import Login from "./login.js";
+import UserInformation from "./userInformation.js";
+import OrderSummary from "./OrderSummary.js";
+import { checkoutSteps } from "../appsettings.js";
 const styles = {
   root: {
     flexGrow: 1,
@@ -16,6 +23,9 @@ const styles = {
   menuButton: {
     marginLeft: -12,
     marginRight: 20
+  },
+  stepper: {
+    backgroundColor: "#f9f9f9"
   }
 };
 
@@ -30,25 +40,45 @@ class Checkout extends Component {
     // this.unsubscribe = AppStore.listen(state =>
     //   this.setState({ AppState: state })
     // );
+    // AppActions.triggerState();
   }
 
   componentWillUnmount() {
     // let self = this;
-    // this.unsubscribe();
+    //this.unsubscribe();
   }
 
   render() {
-    // if (!this.state.AppState) {
-    //   return <div />;
-    // }
     let { isMobile } = this.context,
-      { themeColors } = this.props;
+      { themeColors, classes, activeStep } = this.props;
     return (
       <div style={{ height: "100%" }}>
         <div className="" style={{ marginTop: 55 }}>
+          <Stepper
+            className={classes.stepper}
+            activeStep={activeStep}
+            alternativeLabel
+          >
+            {checkoutSteps.map(label => {
+              return (
+                <Step key={label}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+              );
+            })}
+          </Stepper>
           <Switch>
             <Route exact path="/checkout/login" component={Login} />
-            <Route exact path="/checkout/address" component={Login} />
+            <Route
+              exact
+              path="/checkout/address"
+              render={props => <UserInformation {...this.props} />}
+            />
+            <Route
+              exact
+              path="/checkout/ordersummary"
+              render={props => <OrderSummary {...this.props} />}
+            />
             <Route exact path="/checkout/payment" component={Login} />
           </Switch>
         </div>

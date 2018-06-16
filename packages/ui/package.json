@@ -5,8 +5,7 @@
   "author": "Yogesh M. Mandaokar",
   "license": "MIT",
   "scripts": {
-    "start":
-      "node ../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors",
+    "start": "node ../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors",
     "build": "set NODE_ENV=production&& webpack -p"
   },
   "dependencies": {
@@ -18,12 +17,13 @@
     "flexboxgrid": "^6.3.1",
     "immutable": "^3.8.2",
     "lodash-es": "^4.17.10",
-    "node-vibrant": "^3.0.0",
     "material-ui": "^1.0.0-beta.37",
     "material-ui-icons": "^1.0.0-beta.36",
     "material-ui-pickers": "^1.0.0-rc.3",
     "moment": "^2.21.0",
+    "node-vibrant": "^3.0.0",
     "prop-types": "latest",
+    "radium": "^0.24.0",
     "react": "latest",
     "react-addons-pure-render-mixin": "^15.0.2",
     "react-collapse": "^4.0.3",
@@ -42,9 +42,9 @@
     "react-router-dom": "^4.2.2",
     "react-slick": "^0.23.1",
     "react-spinners": "^0.3.2",
+    "react-sticky": "^6.0.1",
     "react-transition-group": "^1.1.2",
     "reactstrap": "^6.0.1",
-    "react-sticky": "^6.0.1",
     "recharts": "^1.0.0-beta.10",
     "reflux": "^6.4.1",
     "reflux-core": "^1.0.0",

@@ -67,7 +67,25 @@ const AppStore = Reflux.createStore({
       organizationalConfig: {},
       currentProduct: null,
       cartItems: Immutable.Map(),
-      subTotal: 0.0
+      subTotal: 0.0,
+      activeStep: 0,
+      userInfo: {
+        fullName: "",
+        email: "",
+        address: "",
+        latLng: {
+          lat: 0,
+          lng: 0
+        },
+        mobileNo: "",
+        city: "",
+        placeFirst: "",
+        state: "",
+        country: "",
+        pinCode: ""
+      },
+      userShipmentAddresses: [],
+      shippingAddress: null
     });
   },
   validateEmail: function(mail) {
@@ -317,6 +335,7 @@ const AppStore = Reflux.createStore({
             )
           );
         }
+        this.triggerState();
       });
   },
   loadProduct(id) {
@@ -375,6 +394,8 @@ const AppStore = Reflux.createStore({
   getInvoice() {
     let url = "/invoice",
       cartItems = this.state.get("cartItems"),
+      shippingAddress =
+        this.state.get("shippingAddress") || this.state.get("userInfo"),
       items = {};
     cartItems.forEach((item, id) => {
       items[id] = item.quantity;
@@ -382,7 +403,7 @@ const AppStore = Reflux.createStore({
     return axios({
       method: "POST",
       url,
-      data: { items }
+      data: { items, shippingAddress }
     }).then(response => {
       console.debug("invoice", response.data);
       this.updateState(this.state.set("invoice", response.data));
@@ -390,8 +411,30 @@ const AppStore = Reflux.createStore({
     });
   },
   checkoutProcess() {
+    //this.getInvoice().then(() => {
+    history.push({ pathname: "/checkout/login" });
+    //});
+  },
+  nextActiveStep() {
+    let activeStep = this.state.get("activeStep");
+    this.updateState(this.state.set("activeStep", Math.min(activeStep + 1, 3)));
+  },
+  prevActiveStep() {
+    let activeStep = this.state.get("activeStep");
+    this.updateState(this.state.set("activeStep", Math.max(activeStep - 1, 0)));
+  },
+  resetActiveStep() {
+    this.updateState(this.state.set("activeStep", 0));
+  },
+  handleUserInfoChange(key, value, suppress) {
+    let userInfo = this.state.get("userInfo");
+    userInfo[key] = value;
+    this.updateState(this.state.set("userInfo", userInfo), suppress);
+  },
+  processInvoice() {
+    this.nextActiveStep();
     this.getInvoice().then(() => {
-      history.push({ pathname: "/checkout/login" });
+      history.push({ pathname: "/checkout/ordersummary" });
     });
   }
 });

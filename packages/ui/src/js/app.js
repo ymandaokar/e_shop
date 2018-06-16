@@ -74,13 +74,20 @@ class App extends Component {
     history.push({ pathname: `/products` });
   }
   render() {
-    let { classes, isMobile } = this.props,
+    let { classes, isMobile, location } = this.props,
       organizationalConfig =
         (this.state.AppState &&
           this.state.AppState.get("organizationalConfig")) ||
         {},
       categories = this.state.AppState && this.state.AppState.get("categories"),
-      cartItems = this.state.AppState && this.state.AppState.get("cartItems");
+      cartItems = this.state.AppState && this.state.AppState.get("cartItems"),
+      activeStep =
+        (this.state.AppState && this.state.AppState.get("activeStep")) || 0,
+      shippingAddress =
+        this.state.AppState && this.state.AppState.get("shippingAddress"),
+      invoice = this.state.AppState && this.state.AppState.get("invoice"),
+      userInfo =
+        (this.state.AppState && this.state.AppState.get("userInfo")) || {};
     return (
       <div className={classes.root}>
         <ThemeContext.Provider
@@ -121,13 +128,15 @@ class App extends Component {
                       >
                         {organizationalConfig.title}
                       </Typography>
-                      <Cart
-                        {...this.props}
-                        themeColors={themeColors}
-                        isMobile={isMobile}
-                        cartItems={cartItems}
-                        currency={organizationalConfig.currency}
-                      />
+                      {location.pathname.indexOf("checkout") == -1 && (
+                        <Cart
+                          {...this.props}
+                          themeColors={themeColors}
+                          isMobile={isMobile}
+                          cartItems={cartItems}
+                          currency={organizationalConfig.currency}
+                        />
+                      )}
                       <IconButton aria-haspopup="true" color="inherit">
                         <AccountCircle />
                       </IconButton>
@@ -152,7 +161,20 @@ class App extends Component {
                           />
                         )}
                       />
-                      <Route path="/checkout" component={Checkout} />
+                      <Route
+                        path="/checkout"
+                        render={props => (
+                          <Checkout
+                            {...this.props}
+                            themeColors={themeColors}
+                            activeStep={activeStep}
+                            shippingAddress={shippingAddress}
+                            invoice={invoice}
+                            userInfo={userInfo}
+                            currency={organizationalConfig.currency}
+                          />
+                        )}
+                      />
                     </Switch>
                   </ScrollToTop>
                 </div>

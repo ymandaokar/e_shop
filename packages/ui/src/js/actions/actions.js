@@ -16,7 +16,14 @@ const Actions = Reflux.createActions([
   "reset",
   "addToCart",
   "removeFromCart",
-  "checkoutProcess"
+  "checkoutProcess",
+  "nextActiveStep",
+  "prevActiveStep",
+  "resetActiveStep",
+  "triggerState",
+  "handlePayment",
+  "handleUserInfoChange",
+  "processInvoice"
 ]);
 
 export default Actions;

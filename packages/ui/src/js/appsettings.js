@@ -12,5 +12,11 @@ module.exports = {
   },
   paypal: {
     apiKey: ""
-  }
+  },
+  checkoutSteps: [
+    "Login",
+    "Delivery Address",
+    "Order Summary",
+    "Payment Options"
+  ]
 };

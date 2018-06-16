@@ -10,6 +10,7 @@ import CheckBoxIcon from "material-ui-icons/CheckBox";
 import green from "material-ui/colors/green";
 import cyan from "material-ui/colors/cyan";
 import indigo from "material-ui/colors/indigo";
+import AppActions from "../actions/actions.js";
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -90,6 +91,11 @@ const styles = theme => ({
   }
 });
 class Login extends Component {
+  handleGuest() {
+    AppActions.nextActiveStep();
+    let { history } = this.props;
+    history.push({ pathname: "/checkout/address" });
+  }
   render() {
     let { classes } = this.props;
     return (
@@ -191,7 +197,11 @@ class Login extends Component {
                       Login with Google
                     </button>
                     <div className="">
-                      <Button color="primary" className={classes.button}>
+                      <Button
+                        color="primary"
+                        className={classes.button}
+                        onClick={this.handleGuest.bind(this)}
+                      >
                         Continue as Guest
                       </Button>
                     </div>

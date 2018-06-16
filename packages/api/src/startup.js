@@ -378,7 +378,7 @@ function startExpress() {
       });
 
       app.post("/invoice", (req, res, next) => {
-        let { items } = req.body;
+        let { items, shippingAddress } = req.body;
         getNewDB(commonDB)
           .db.allDocs({
             keys: Object.keys(items),
@@ -408,10 +408,15 @@ function startExpress() {
               invoice.subtotal += cost;
             });
             invoice.charges = {};
-            if (invoice.subtotal) {
+            if (invoice.subtotal < 1000) {
               invoice.charges["Delivery charge"] =
-                (invoice.subtotal * 10) / 100;
+                (shippingAddress.country || "")
+                  .toLowerCase()
+                  .indexOf("india") != -1
+                  ? 120
+                  : 220;
             }
+            invoice.charges["Tax amount(18%)"] = (invoice.subtotal * 18) / 100;
             invoice.net = invoice.subtotal;
             Object.keys(invoice.charges).forEach(id => {
               invoice.net += invoice.charges[id];

@@ -1756,11 +1756,13 @@ a:hover {
   padding: 15px;
 }
 .footerDiv {
-  padding: 10px;
+  padding: 5px;
 }
 .summaryPane {
-  padding: 15px;
+  padding: 25px;
   overflow: auto;
+  background-color: white;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.19), 0 1px 1px rgba(0, 0, 0, 0.23);
 }
 .pad15Per {
   padding: 0px 15px;
@@ -1933,11 +1935,13 @@ form {
 .border {
   border: 1px solid lightgray;
 }
-.shippingPane {
-  height: 97%;
+.shippingPane {    
+  height: 100%;
   overflow: hidden;
   overflow-y: auto;
-  padding: 0px 10px;
+  padding: 35px;
+  background-color: white;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.19), 0 1px 1px rgba(0, 0, 0, 0.23);
 }
 .thankYouPane {
   padding: 10px;
@@ -2676,4 +2680,8 @@ label {
 .socialLoginSection {
   margin-top: 7px;
   padding: 0% 5%;
+}
+.invoiceCharges {
+  margin: 5px 0px;
+  padding-right: 7px;
 }
