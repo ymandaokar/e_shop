@@ -103,9 +103,9 @@ module.exports = {
       credentials: {
         clientID:
           process.env.GOOGLE_CLIENTID ||
-          "902980175197-ifg4bgvt8u3gqvtkaokimpf7tehqn3l8.apps.googleusercontent.com",
+          "361923803461-smnla6l9c0uai3sju0asorhq16apbtb3.apps.googleusercontent.com",
         clientSecret:
-          process.env.GOOGLE_CLIENTSECRET || "Id9pZcjMXbecaQ-197nWrIJq"
+          process.env.GOOGLE_CLIENTSECRET || "D9IErsPvxfZLDYrJUEfYcutI"
       },
       options: {
         scope: ["profile", "email"]

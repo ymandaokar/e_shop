@@ -44,6 +44,7 @@ let fs = require("fs"),
   handleExceptions = require("./handleexceptions.js"),
   processSSL = require("./processssl.js"),
   initialzeAdminDB = require("./helpers/initializeadmindb.js"),
+  addIndexes = require("./dbutils/addindexes.js"),
   getError = require("./helpers/getformattederror.js");
 PouchDB.plugin(require("pouchdb-find"));
 
@@ -196,9 +197,9 @@ function startExpress() {
       //superlogin events
       superlogin.on("login", (userDoc, provider) => {
         superlogin
-          .addUserDB(userDoc.user_id, "e_cart")
+          .addUserDB(userDoc.user_id, "ecart")
           .then(dbName => {
-            let urlObj = url.parse(userDoc.userDBs.survey),
+            let urlObj = url.parse(userDoc.userDBs.ecart),
               { db, url: dbUrl } = getNewDB(urlObj.pathname.split("/")[1]),
               userId = userDoc.user_id;
             serverDbs[userId] = {

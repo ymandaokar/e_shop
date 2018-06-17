@@ -50,6 +50,7 @@
     "reflux": "^6.4.1",
     "reflux-core": "^1.0.0",
     "slick-carousel": "^1.8.1",
+    "superlogin-client": "^0.8.0",
     "timediff": "^1.1.1"
   },
   "devDependencies": {

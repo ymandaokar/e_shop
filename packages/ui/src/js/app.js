@@ -22,6 +22,7 @@ import Avatar from "material-ui/Avatar";
 import ShoppingCart from "material-ui-icons/ShoppingCart";
 import Cart from "./components/cart.js";
 import Checkout from "./components/checkout.js";
+import UserProfile from "./components/userprofile.js";
 const styles = {
   root: {
     flexGrow: 1,
@@ -137,9 +138,10 @@ class App extends Component {
                           currency={organizationalConfig.currency}
                         />
                       )}
-                      <IconButton aria-haspopup="true" color="inherit">
+                      {/* <IconButton aria-haspopup="true" color="inherit">
                         <AccountCircle />
-                      </IconButton>
+                      </IconButton> */}
+                      <UserProfile />
                     </Toolbar>
                   </AppBar>
                 </div>
