@@ -412,6 +412,7 @@ const AppStore = Reflux.createStore({
   },
   checkoutProcess() {
     //this.getInvoice().then(() => {
+    this.resetActiveStep();
     history.push({ pathname: "/checkout/login" });
     //});
   },
