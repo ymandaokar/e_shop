@@ -35,29 +35,21 @@ const styles = theme => ({
     position: "relative"
   },
   fabProgress: {
-    color: blue[500],
+    color: "white",
     position: "absolute",
     top: 4,
     left: 4,
     zIndex: 1
-  }
+  },
+  userAvatar: {}
 });
 class UserProfile extends Component {
   constructor() {
     super();
-    this.state = { Auth: null, anchorEl: null };
+    this.state = { anchorEl: null };
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
-  // componentDidMount() {
-  //   this.unsubscribe = AuthStore.listen(state =>
-  //     this.setState({ Auth: state })
-  //   );
-  //   AuthActions.triggerState();
-  // }
-  // componentWillUnmount() {
-  //   this.unsubscribe();
-  // }
   handleLogout() {
     this.handleClose();
     AuthActions.logout();
@@ -91,7 +83,7 @@ class UserProfile extends Component {
           onClick={this.handleClick}
           color="inherit"
         >
-          <Avatar src={thumbnail} size={40} className="userAvatar" />
+          <Avatar src={thumbnail} size={40} className={classes.userAvatar} />
         </IconButton>
       );
     }
@@ -143,9 +135,18 @@ class UserProfile extends Component {
           {this.getUserIcon(auth)}
           <Menu
             id="signed-in"
+            style={{ marginTop: 46 }}
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             onClose={this.handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right"
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right"
+            }}
           >
             <MenuItem onClick={this.handleLogout.bind(this)}>
               <ListItemIcon>
@@ -180,9 +181,18 @@ class UserProfile extends Component {
           {this.getUserIcon(auth)}
           <Menu
             id="signed-out"
+            style={{ marginTop: 46 }}
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             onClose={this.handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right"
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right"
+            }}
           >
             {providersItems}
           </Menu>

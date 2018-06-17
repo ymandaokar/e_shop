@@ -64,92 +64,9 @@ class Checkout extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    // let self = this;
-    // this.unsubscribe = AppStore.listen(state =>
-    //   this.setState({ AppState: state })
-    // );
-    // AppActions.triggerState();
-  }
-
-  componentWillUnmount() {
-    // let self = this;
-    //this.unsubscribe();
-  }
-
   render() {
     let { isMobile, theme } = this.context,
       { themeColors, classes, activeStep } = this.props;
-    // if (isMobile) {
-    //   return (
-    //     <div style={{ height: "100%" }}>
-    //       <div className="" style={{ marginTop: 55 }}>
-    //         <Stepper
-    //           className={classes.mobileStepper}
-    //           activeStep={activeStep}
-    //           orientation={"vertical"}
-    //         >
-    //           {checkoutSteps.map(label => {
-    //             return (
-    //               <Step key={label}>
-    //                 <StepLabel>{label}</StepLabel>
-    //                 <StepContent className={classes.stepperContaint}>
-    //                   <Switch>
-    //                     <Route exact path="/checkout/login" component={Login} />
-    //                     <Route
-    //                       exact
-    //                       path="/checkout/address"
-    //                       render={props => <UserInformation {...this.props} />}
-    //                     />
-    //                     <Route
-    //                       exact
-    //                       path="/checkout/ordersummary"
-    //                       render={props => <OrderSummary {...this.props} />}
-    //                     />
-    //                     <Route
-    //                       exact
-    //                       path="/checkout/payment"
-    //                       component={Login}
-    //                     />
-    //                   </Switch>
-    //                 </StepContent>
-    //               </Step>
-    //             );
-    //           })}
-    //         </Stepper>
-    //       </div>
-    //     </div>
-    //   );
-    // }
-    // if (isMobile) {
-    //   return (
-    //     <div style={{ height: "100%" }}>
-    //       <div className="" style={{ marginTop: 55 }}>
-    //         <div className="col-xs-11">
-    //           <Paper square elevation={0} className={classes.header}>
-    //             <Typography>{checkoutSteps[activeStep]}</Typography>
-    //           </Paper>
-    //           <SwipeableViews index={activeStep}>
-    //             <Switch>
-    //               <Route exact path="/checkout/login" component={Login} />
-    //               <Route
-    //                 exact
-    //                 path="/checkout/address"
-    //                 render={props => <UserInformation {...this.props} />}
-    //               />
-    //               <Route
-    //                 exact
-    //                 path="/checkout/ordersummary"
-    //                 render={props => <OrderSummary {...this.props} />}
-    //               />
-    //               <Route exact path="/checkout/payment" component={Login} />
-    //             </Switch>
-    //           </SwipeableViews>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   );
-    // }
     return (
       <div style={{ height: "100%" }}>
         <div className="" style={{ marginTop: 55 }}>
