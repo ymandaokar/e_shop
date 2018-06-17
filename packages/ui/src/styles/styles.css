@@ -2681,6 +2681,10 @@ label {
   margin-top: 7px;
   padding: 0% 5%;
 }
+.socialLoginSectionMobile {
+  margin-top: 7px;
+  padding: 5% 2%;
+}
 .invoiceCharges {
   margin: 5px 0px;
   padding-right: 7px;

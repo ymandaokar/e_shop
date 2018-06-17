@@ -97,13 +97,14 @@ class Login extends Component {
     history.push({ pathname: "/checkout/address" });
   }
   render() {
-    let { classes } = this.props;
+    let { classes } = this.props,
+      { isMobile } = this.context;
     return (
       <div className={`row center-xs`}>
-        <div className={`col-xs-8`}>
-          <div className={`box centerItem`}>
-            <div className={`row loginPage`}>
-              <div className={`col-xs-6 rightBar`}>
+        <div className={isMobile ? "col-xs-12" : `col-xs-8`}>
+          <div className={`box ${!isMobile && "centerItem"}`}>
+            <div className={`row ${!isMobile && "loginPage"}`}>
+              <div className={isMobile ? "col-xs-12" : `col-xs-6 rightBar`}>
                 <div className={`box`}>
                   <div className="textInput">
                     <TextField
@@ -148,7 +149,7 @@ class Login extends Component {
                     </Button>
                   </div>
                   <div className="row">
-                    <div className="col-xs-6">
+                    <div className={"col-xs-6"}>
                       <div className="box">
                         <FormControlLabel
                           className={classes.control}
@@ -183,9 +184,15 @@ class Login extends Component {
                   </div>
                 </div>
               </div>
-              <div className={`col-xs-6`}>
+              <div className={isMobile ? "col-xs-12" : `col-xs-6`}>
                 <div className={`box`}>
-                  <div className="socialLoginSection">
+                  <div
+                    className={
+                      isMobile
+                        ? "socialLoginSectionMobile"
+                        : "socialLoginSection"
+                    }
+                  >
                     <a href="#" style={{ color: indigo[500] }}>
                       Don't have an account? Sign up!
                     </a>

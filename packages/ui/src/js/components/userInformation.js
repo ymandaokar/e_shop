@@ -264,7 +264,7 @@ class UserInformation extends Component {
     //console.debug("userInfo", userInfo);
     return (
       <div className="row center-xs">
-        <div className="col-xs-10 start-xs">
+        <div className={`${isMobile ? "col-xs-11" : "col-xs-10"} start-xs`}>
           <div className={!isMobile ? "shippingPane" : ""}>
             {!!user &&
               (!!tempshipmentAddresses.length ? (
@@ -776,7 +776,9 @@ class UserInformation extends Component {
             </div>
           </div>
         </div>
-        <div className="col-xs-10 start-xs">{this.getFooterButtons()}</div>
+        <div className={`${isMobile ? "col-xs-11" : "col-xs-10"} start-xs`}>
+          {this.getFooterButtons()}
+        </div>
       </div>
     );
   }

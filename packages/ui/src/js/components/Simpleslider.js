@@ -12,7 +12,7 @@ class SimpleSlider extends Component {
           image={item.image.s}
           siteURL={siteURL}
           imageDimentions={{
-            height: 200,
+            height: 210,
             width: "100%"
           }}
         />
@@ -25,7 +25,7 @@ class SimpleSlider extends Component {
         image={item.image.l}
         siteURL={siteURL}
         imageDimentions={{
-          height: 300,
+          height: 320,
           width: "100%"
         }}
       />
@@ -56,7 +56,7 @@ class SimpleSlider extends Component {
       <div>
         <div
           className="row center-xs sliderparent "
-          style={{ height: isMobile ? 200 : 300, background: "lightgray" }}
+          style={{ height: isMobile ? 210 : 320, background: "lightgray" }}
         >
           <div className="sliderDiv heroSlider">
             <Slider {...settings}>

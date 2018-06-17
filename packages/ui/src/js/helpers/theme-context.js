@@ -31,6 +31,22 @@ export const themes = {
     pickerHeaderColor: "",
     clockCircleColor: "",
     shadowColor: ""
+  },
+  purple: {
+    primary1Color: "purple", //  header,buttons
+    primary2Color: "rgb(245, 0, 87)", //  procceed to checkout button
+    primary3Color: "#005580", //  heading titles
+    accent1Color: "#455a647d", //  search button
+    accent2Color: "#455a6447", //  Cards pane
+    accent3Color: "",
+    textColor: "#ffffff",
+    alternateTextColor: "",
+    canvasColor: "",
+    borderColor: "",
+    disabledColor: "",
+    pickerHeaderColor: "",
+    clockCircleColor: "",
+    shadowColor: ""
   }
 };
 

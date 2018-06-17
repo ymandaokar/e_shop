@@ -43,6 +43,7 @@
     "react-slick": "^0.23.1",
     "react-spinners": "^0.3.2",
     "react-sticky": "^6.0.1",
+    "react-swipeable-views": "^0.12.13",
     "react-transition-group": "^1.1.2",
     "reactstrap": "^6.0.1",
     "recharts": "^1.0.0-beta.10",

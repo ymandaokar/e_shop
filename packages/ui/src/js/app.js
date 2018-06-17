@@ -91,7 +91,7 @@ class App extends Component {
     return (
       <div className={classes.root}>
         <ThemeContext.Provider
-          value={organizationalConfig.theme || themes.gray}
+          value={organizationalConfig.theme || themes.purple}
         >
           <ThemeContext.Consumer>
             {themeColors => (

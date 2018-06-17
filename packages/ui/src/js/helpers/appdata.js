@@ -447,14 +447,14 @@ exports.ImageryData = {
       id: "", // itemid
       title: "Min.60% + Extra5%Off",
       description: "",
-      category: "Energy Drinks",
+      category: "Women Bags",
       image: {
         // urls of the image in various sizes
-        xs: "./extern/BlackandBold.png",
-        s: "./extern/BlackandBold.png",
-        m: "./extern/BlackandBold.png",
-        l: "./extern/BlackandBold.png",
-        xl: "./extern/BlackandBold.png"
+        xs: "http://pngimg.com/uploads/women_bag/women_bag_PNG6422.png",
+        s: "http://pngimg.com/uploads/women_bag/women_bag_PNG6422.png",
+        m: "http://pngimg.com/uploads/women_bag/women_bag_PNG6422.png",
+        l: "http://pngimg.com/uploads/women_bag/women_bag_PNG6422.png",
+        xl: "http://pngimg.com/uploads/women_bag/women_bag_PNG6422.png"
       },
       actions: {
         //Used for displaying clickable actions, e.g. "Click here" or "See more"
@@ -473,16 +473,21 @@ exports.ImageryData = {
     },
     {
       id: "", // itemid
-      title: "Cajun Boiled Peanuts",
+      title: "Trophy",
       description: "Min 40% off",
-      category: "Daily food delights",
+      category: "Congratulation",
       image: {
         // urls of the image in various sizes
-        xs: "./extern/New Nuts Cajun.png",
-        s: "./extern/New Nuts Cajun.png",
-        m: "./extern/New Nuts Cajun.png",
-        l: "./extern/New Nuts Cajun.png",
-        xl: "./extern/New Nuts Cajun.png"
+        xs:
+          "https://i1.wp.com/freepngimages.com/wp-content/uploads/2015/10/gold-trophy-transparent-background.png?fit=486%2C598",
+        s:
+          "https://i1.wp.com/freepngimages.com/wp-content/uploads/2015/10/gold-trophy-transparent-background.png?fit=486%2C598",
+        m:
+          "https://i1.wp.com/freepngimages.com/wp-content/uploads/2015/10/gold-trophy-transparent-background.png?fit=486%2C598",
+        l:
+          "https://i1.wp.com/freepngimages.com/wp-content/uploads/2015/10/gold-trophy-transparent-background.png?fit=486%2C598",
+        xl:
+          "https://i1.wp.com/freepngimages.com/wp-content/uploads/2015/10/gold-trophy-transparent-background.png?fit=486%2C598"
       },
       actions: {
         //Used for displaying clickable actions, e.g. "Click here" or "See more"
@@ -501,16 +506,21 @@ exports.ImageryData = {
     },
     {
       id: "", // itemid
-      title: "Barber's 2% Milk",
+      title: "Pillow",
       description: "Min 30% off",
-      category: "Dairy products",
+      category: "Handmade",
       image: {
         // urls of the image in various sizes
-        xs: "./extern/Whole Milk.png",
-        s: "./extern/Whole Milk.png",
-        m: "./extern/Whole Milk.png",
-        l: "./extern/Whole Milk.png",
-        xl: "./extern/Whole Milk.png"
+        xs:
+          "http://cdn.shopify.com/s/files/1/2097/8619/products/il_570xN.1218948774_lw99_la_grande.gif?v=1512667119",
+        s:
+          "http://cdn.shopify.com/s/files/1/2097/8619/products/il_570xN.1218948774_lw99_la_grande.gif?v=1512667119",
+        m:
+          "http://cdn.shopify.com/s/files/1/2097/8619/products/il_570xN.1218948774_lw99_la_grande.gif?v=1512667119",
+        l:
+          "http://cdn.shopify.com/s/files/1/2097/8619/products/il_570xN.1218948774_lw99_la_grande.gif?v=1512667119",
+        xl:
+          "http://cdn.shopify.com/s/files/1/2097/8619/products/il_570xN.1218948774_lw99_la_grande.gif?v=1512667119"
       },
       actions: {
         //Used for displaying clickable actions, e.g. "Click here" or "See more"
@@ -680,17 +690,54 @@ exports.HeroData = {
   items: [
     {
       id: "", // itemid
+      title: "Philips - Trimmers",
+      description: "Min 30% off",
+      category: "Trimmers",
+      image: {
+        // urls of the image in various sizes
+        xs:
+          "https://worldartcommunity.com/images/shop-images/shop_banner_c3b25357ecfc76d3664c10b120822f1b.jpg",
+        s:
+          "https://worldartcommunity.com/images/shop-images/shop_banner_c3b25357ecfc76d3664c10b120822f1b.jpg",
+        m:
+          "https://worldartcommunity.com/images/shop-images/shop_banner_c3b25357ecfc76d3664c10b120822f1b.jpg",
+        l:
+          "https://worldartcommunity.com/images/shop-images/shop_banner_c3b25357ecfc76d3664c10b120822f1b.jpg",
+        xl:
+          "https://worldartcommunity.com/images/shop-images/shop_banner_c3b25357ecfc76d3664c10b120822f1b.jpg"
+      },
+      actions: {
+        //Used for displaying clickable actions, e.g. "Click here" or "See more"
+        primary: {
+          title: "",
+          link: "", // the url for the action, can be relative or absolute.
+          icon: ""
+        },
+        secondary: {
+          title: "",
+          link: "",
+          icon: ""
+        }
+      },
+      createdAt: "" // datetime when this item was added to the feed, used for pagination through "since"
+    },
+    {
+      id: "", // itemid
       title: "LENOVO Laptop",
       description: "Core 3 laptops",
       category: "Laptops",
       image: {
         // urls of the image in various sizes
         xs:
-          "https://rukminim1.flixcart.com/flap/3376/560/image/eed9bf.jpg?q=50",
-        s: "https://rukminim1.flixcart.com/flap/984/528/image/76c490.jpg?q=90",
-        m: "https://rukminim1.flixcart.com/flap/984/528/image/76c490.jpg?q=90",
-        l: "https://rukminim1.flixcart.com/flap/3376/560/image/eed9bf.jpg?q=50",
-        xl: "https://rukminim1.flixcart.com/flap/3376/560/image/eed9bf.jpg?q=50"
+          "https://static.theworks.co.uk/static-images/espot/top-banner/christmas-craft-banner-3105.jpg",
+        s:
+          "https://static.theworks.co.uk/static-images/espot/top-banner/christmas-craft-banner-3105.jpg",
+        m:
+          "https://static.theworks.co.uk/static-images/espot/top-banner/christmas-craft-banner-3105.jpg",
+        l:
+          "https://static.theworks.co.uk/static-images/espot/top-banner/christmas-craft-banner-3105.jpg",
+        xl:
+          "https://static.theworks.co.uk/static-images/espot/top-banner/christmas-craft-banner-3105.jpg"
       },
       actions: {
         //Used for displaying clickable actions, e.g. "Click here" or "See more"
@@ -715,40 +762,11 @@ exports.HeroData = {
       image: {
         // urls of the image in various sizes
         xs:
-          "https://rukminim1.flixcart.com/flap/3376/560/image/3bc9ff.jpg?q=50",
-        s: "https://rukminim1.flixcart.com/flap/984/528/image/568105.jpg?q=90",
-        m: "https://rukminim1.flixcart.com/flap/984/528/image/568105.jpg?q=90",
-        l: "https://rukminim1.flixcart.com/flap/3376/560/image/3bc9ff.jpg?q=50",
-        xl: "https://rukminim1.flixcart.com/flap/3376/560/image/3bc9ff.jpg?q=50"
-      },
-      actions: {
-        //Used for displaying clickable actions, e.g. "Click here" or "See more"
-        primary: {
-          title: "",
-          link: "", // the url for the action, can be relative or absolute.
-          icon: ""
-        },
-        secondary: {
-          title: "",
-          link: "",
-          icon: ""
-        }
-      },
-      createdAt: "" // datetime when this item was added to the feed, used for pagination through "since"
-    },
-    {
-      id: "", // itemid
-      title: "Philips - Trimmers",
-      description: "Min 30% off",
-      category: "Trimmers",
-      image: {
-        // urls of the image in various sizes
-        xs:
-          "https://rukminim1.flixcart.com/flap/3376/560/image/444218.jpg?q=50",
-        s: "https://rukminim1.flixcart.com/flap/984/528/image/033cc2.jpg?q=90",
-        m: "https://rukminim1.flixcart.com/flap/984/528/image/033cc2.jpg?q=90",
-        l: "https://rukminim1.flixcart.com/flap/3376/560/image/444218.jpg?q=50",
-        xl: "https://rukminim1.flixcart.com/flap/3376/560/image/444218.jpg?q=50"
+          "https://www.hobbyideas.in/assets/v2/img/upload-craft-creations.jpg",
+        s: "https://www.hobbyideas.in/assets/v2/img/upload-craft-creations.jpg",
+        m: "https://www.hobbyideas.in/assets/v2/img/upload-craft-creations.jpg",
+        l: "https://www.hobbyideas.in/assets/v2/img/upload-craft-creations.jpg",
+        xl: "https://www.hobbyideas.in/assets/v2/img/upload-craft-creations.jpg"
       },
       actions: {
         //Used for displaying clickable actions, e.g. "Click here" or "See more"

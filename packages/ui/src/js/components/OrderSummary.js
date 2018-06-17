@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "material-ui/styles";
 import { forIn } from "lodash-es";
 import AppStore from "../stores/store.js";
 import AppActions from "../actions/actions.js";
@@ -109,12 +111,10 @@ class OrderSummary extends Component {
       });
     return (
       <div className="row center-xs">
-        <div className="col-xs-10 start-xs">
+        <div className={`${isMobile ? "col-xs-11" : "col-xs-10"} start-xs`}>
           <Collapse isOpened={this.state.collapse}>
             <div
-              className={
-                isMobile ? "box pad15Per" : "box summaryPane leftAlignIE"
-              }
+              className={isMobile ? "box" : "box summaryPane leftAlignIE"}
               style={{ marginTop: 5 }}
             >
               <div className="center-xs">
@@ -222,10 +222,19 @@ class OrderSummary extends Component {
             </div>
           </Collapse>
         </div>
-        <div className="col-xs-10 start-xs">{this.getFooterButtons()}</div>
+        <div className={`${isMobile ? "col-xs-11" : "col-xs-10"} start-xs`}>
+          {this.getFooterButtons()}
+        </div>
       </div>
     );
   }
 }
+OrderSummary.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
+OrderSummary.childContextTypes = {
+  isMobile: PropTypes.bool,
+  isShort: PropTypes.bool
+};
 export default OrderSummary;
