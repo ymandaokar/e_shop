@@ -11,6 +11,7 @@ import green from "material-ui/colors/green";
 import cyan from "material-ui/colors/cyan";
 import indigo from "material-ui/colors/indigo";
 import AppActions from "../actions/actions.js";
+import AuthActions from "../actions/authactions.js";
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -97,8 +98,15 @@ class Login extends Component {
     history.push({ pathname: "/checkout/address" });
   }
   render() {
-    let { classes } = this.props,
+    let { classes, auth } = this.props,
       { isMobile } = this.context;
+    if (auth) {
+      let { userProfile } = auth;
+      if (userProfile && !userProfile.isGuest) {
+        this.handleGuest();
+        return <div />;
+      }
+    }
     return (
       <div className={`row center-xs`}>
         <div className={isMobile ? "col-xs-12" : `col-xs-8`}>
@@ -196,12 +204,14 @@ class Login extends Component {
                     <a href="#" style={{ color: indigo[500] }}>
                       Don't have an account? Sign up!
                     </a>
+                    <button
+                      class="loginBtn loginBtn--google"
+                      onClick={AuthActions.login.bind(this, "google")}
+                    >
+                      Login with Google
+                    </button>
                     <button class="loginBtn loginBtn--facebook">
                       Login with Facebook
-                    </button>
-
-                    <button class="loginBtn loginBtn--google">
-                      Login with Google
                     </button>
                     <div className="">
                       <Button

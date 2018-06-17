@@ -49,15 +49,15 @@ class UserProfile extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
-  componentDidMount() {
-    this.unsubscribe = AuthStore.listen(state =>
-      this.setState({ Auth: state })
-    );
-    AuthActions.triggerState();
-  }
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
+  // componentDidMount() {
+  //   this.unsubscribe = AuthStore.listen(state =>
+  //     this.setState({ Auth: state })
+  //   );
+  //   AuthActions.triggerState();
+  // }
+  // componentWillUnmount() {
+  //   this.unsubscribe();
+  // }
   handleLogout() {
     this.handleClose();
     AuthActions.logout();
@@ -193,7 +193,7 @@ class UserProfile extends Component {
     return this.getUserIcon(auth);
   }
   render() {
-    let auth = this.state.Auth && this.state.Auth.toJSON();
+    let { auth } = this.props;
     if (!auth) {
       return <div />;
     }

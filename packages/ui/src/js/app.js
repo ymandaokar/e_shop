@@ -13,6 +13,8 @@ import Tooltip from "material-ui/Tooltip";
 import Settings from "material-ui-icons/Settings";
 import AppActions from "./actions/actions.js";
 import AppStore from "./stores/store.js";
+import AuthActions from "./actions/authactions.js";
+import AuthStore from "./stores/authstore.js";
 import ScrollToTop from "./scrolltotop.js";
 import Products from "./components/products.js";
 import LandingPage from "./components/landingpage.js";
@@ -51,7 +53,7 @@ const styles = {
 class App extends Component {
   constructor() {
     super();
-    this.state = { AppState: null, openDrawer: false };
+    this.state = { Auth: null, AppState: null, openDrawer: false };
     this.toggleDrawer = this.toggleDrawer.bind(this);
   }
   toggleDrawer() {
@@ -66,9 +68,14 @@ class App extends Component {
       this.setState({ AppState: state })
     );
     AppActions.loadData();
+    this.unsubscribeAuth = AuthStore.listen(state =>
+      this.setState({ Auth: state })
+    );
+    AuthActions.triggerState();
   }
   componentWillUnmount() {
     this.unsubscribe();
+    this.unsubscribeAuth();
   }
   handleHome() {
     let history = this.props.history;
@@ -87,6 +94,7 @@ class App extends Component {
       shippingAddress =
         this.state.AppState && this.state.AppState.get("shippingAddress"),
       invoice = this.state.AppState && this.state.AppState.get("invoice"),
+      auth = this.state.Auth && this.state.Auth.toJSON(),
       userInfo =
         (this.state.AppState && this.state.AppState.get("userInfo")) || {};
     return (
@@ -141,7 +149,7 @@ class App extends Component {
                       {/* <IconButton aria-haspopup="true" color="inherit">
                         <AccountCircle />
                       </IconButton> */}
-                      <UserProfile />
+                      <UserProfile auth={auth} />
                     </Toolbar>
                   </AppBar>
                 </div>
@@ -174,6 +182,7 @@ class App extends Component {
                             invoice={invoice}
                             userInfo={userInfo}
                             currency={organizationalConfig.currency}
+                            auth={auth}
                           />
                         )}
                       />

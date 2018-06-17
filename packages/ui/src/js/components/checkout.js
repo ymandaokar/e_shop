@@ -167,7 +167,11 @@ class Checkout extends Component {
             })}
           </Stepper>
           <Switch>
-            <Route exact path="/checkout/login" component={Login} />
+            <Route
+              exact
+              path="/checkout/login"
+              render={props => <Login {...this.props} />}
+            />
             <Route
               exact
               path="/checkout/address"

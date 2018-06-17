@@ -226,16 +226,23 @@ class UserInformation extends Component {
     let {
         isMobile,
         fetchingUser,
-        user,
+        auth,
         themeColors,
         classes,
         shippingAddress,
         userShipmentAddresses,
         userInfo
       } = this.props,
-      shipmentAddresses = [];
+      shipmentAddresses = [],
+      user = null;
     if (fetchingUser) {
       return <div className="dialogContents" />;
+    }
+    if (auth) {
+      let { userProfile } = auth;
+      if (userProfile && !userProfile.isGuest) {
+        user = userProfile;
+      }
     }
     if (shippingAddress) {
       let { FullName, AddressLine, City, State, PostalCode } = shippingAddress;
