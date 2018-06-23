@@ -149,7 +149,7 @@ class App extends Component {
                       {/* <IconButton aria-haspopup="true" color="inherit">
                         <AccountCircle />
                       </IconButton> */}
-                      <UserProfile auth={auth} />
+                      <UserProfile auth={auth} themeColors={themeColors} />
                     </Toolbar>
                   </AppBar>
                 </div>

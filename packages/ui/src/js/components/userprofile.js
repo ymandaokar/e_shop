@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import { Manager, Target, Popper } from "react-popper";
 import ClickAwayListener from "material-ui/utils/ClickAwayListener";
-import FontIcon from "material-ui/Icon";
 import CircularProgress from "material-ui/Progress/CircularProgress";
 import Avatar from "material-ui/Avatar";
 import AccountCircle from "material-ui-icons/AccountCircle";
 import IconButton from "material-ui/IconButton";
 import Icon from "material-ui/Icon";
+import SvgIcon from "material-ui/SvgIcon";
 import Paper from "material-ui/Paper";
 import MenuItem from "material-ui/Menu/MenuItem";
 import Menu from "material-ui/Menu/Menu";
@@ -40,6 +40,17 @@ const styles = theme => ({
     top: 4,
     left: 4,
     zIndex: 1
+  },
+  icon: {
+    margin: 5,
+    height: 32,
+    width: 32
+  },
+  iconHover: {
+    margin: theme.spacing.unit * 2,
+    "&:hover": {
+      color: red[800]
+    }
   },
   userAvatar: {}
 });
@@ -126,10 +137,11 @@ class UserProfile extends Component {
   }
   getAuthMenu(auth) {
     let { authState, AuthStates, provider, AuthProviders } = auth,
-      { anchorEl } = this.state;
+      { anchorEl } = this.state,
+      { classes, themeColors } = this.props;
     if (authState == AuthStates.SIGNED_IN) {
       // Render logout for signed-in user.
-      let icon = <FontIcon className="icon-logout" color={blue[500]} />;
+      let icon = <Icon className="icon-logout" color={blue[500]} />;
       return (
         <div>
           {this.getUserIcon(auth)}
@@ -165,12 +177,15 @@ class UserProfile extends Component {
       let providersItems = [];
       for (let provider of AuthProviders) {
         let { name, title, logo } = provider,
-          icon = <FontIcon className={logo} color={blue[500]} />;
+          IconSvg = props => <SvgIcon {...props}>{logo}</SvgIcon>;
         providersItems.push(
           <MenuItem key={name} onClick={this.handleLogin.bind(this, name)}>
-            <ListItemIcon>
-              <Icon color="primary">{logo}</Icon>
-            </ListItemIcon>
+            <IconSvg
+              style={{ color: themeColors.primary1Color }}
+              // color="primary"
+              className={classes.icon}
+              viewBox="0 0 32 32"
+            />
             <ListItemText>{title}</ListItemText>
           </MenuItem>
         );

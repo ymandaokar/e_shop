@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node ../../node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors",
-    "build": "set NODE_ENV=production&& webpack -p"
+    "build": "webpack -p"
   },
   "dependencies": {
     "axios": "^0.18.0",
