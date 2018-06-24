@@ -344,6 +344,26 @@ function startExpress() {
           });
       });
 
+      app.get("/auth/categories", (req, res, next) => {
+        let { user, skip, limit, sort, fields } = req.query;
+        skip = Number(skip) || 0;
+        limit = Number(limit) || undefined;
+        getNewDB(commonDB)
+          .db.find({
+            selector: { docType: { $eq: "category" } },
+            skip,
+            limit,
+            sort,
+            fields
+          })
+          .then(categories => {
+            res.status(200).json(categories);
+          })
+          .catch(err => {
+            next(err);
+          });
+      });
+
       app.get("/organization/configuration", (req, res, next) => {
         getNewDB(commonDB)
           .db.find({

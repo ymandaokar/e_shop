@@ -9,8 +9,8 @@ import Button from "material-ui/Button";
 import IconButton from "material-ui/IconButton";
 import MenuIcon from "material-ui-icons/Menu";
 import AccountCircle from "material-ui-icons/AccountCircle";
-import Tooltip from "material-ui/Tooltip";
 import Settings from "material-ui-icons/Settings";
+import Tooltip from "material-ui/Tooltip";
 import AppActions from "./actions/actions.js";
 import AppStore from "./stores/store.js";
 import AuthActions from "./actions/authactions.js";
@@ -25,6 +25,7 @@ import ShoppingCart from "material-ui-icons/ShoppingCart";
 import Cart from "./components/cart.js";
 import Checkout from "./components/checkout.js";
 import UserProfile from "./components/userprofile.js";
+import Admin from "./components/Admin.js";
 const styles = {
   root: {
     flexGrow: 1,
@@ -81,6 +82,10 @@ class App extends Component {
     let history = this.props.history;
     history.push({ pathname: `/products` });
   }
+  routeToAdmin() {
+    let history = this.props.history;
+    history.push({ pathname: `/admin/categories` });
+  }
   render() {
     let { classes, isMobile, location } = this.props,
       organizationalConfig =
@@ -94,9 +99,11 @@ class App extends Component {
       shippingAddress =
         this.state.AppState && this.state.AppState.get("shippingAddress"),
       invoice = this.state.AppState && this.state.AppState.get("invoice"),
+      authState = this.state.Auth && this.state.Auth.get("authState"),
       auth = this.state.Auth && this.state.Auth.toJSON(),
       userInfo =
-        (this.state.AppState && this.state.AppState.get("userInfo")) || {};
+        (this.state.AppState && this.state.AppState.get("userInfo")) || {},
+      { userProfile } = auth || {};
     return (
       <div className={classes.root}>
         <ThemeContext.Provider
@@ -149,6 +156,16 @@ class App extends Component {
                       {/* <IconButton aria-haspopup="true" color="inherit">
                         <AccountCircle />
                       </IconButton> */}
+                      {userProfile &&
+                        userProfile.isAdmin && (
+                          <IconButton
+                            onClick={this.routeToAdmin.bind(this)}
+                            aria-haspopup="true"
+                            color="inherit"
+                          >
+                            <Settings />
+                          </IconButton>
+                        )}
                       <UserProfile auth={auth} themeColors={themeColors} />
                     </Toolbar>
                   </AppBar>
@@ -160,6 +177,16 @@ class App extends Component {
                   <ScrollToTop location={this.props.location}>
                     <Switch>
                       <Route exact path="/" component={LandingPage} />
+                      <Route
+                        path="/admin"
+                        render={() => (
+                          <Admin
+                            {...this.props}
+                            themeColors={themeColors}
+                            isAdmin={userProfile && userProfile.isAdmin}
+                          />
+                        )}
+                      />
                       <Route
                         path="/products"
                         render={props => (

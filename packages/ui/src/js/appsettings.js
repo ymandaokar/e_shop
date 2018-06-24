@@ -2,6 +2,7 @@
 //test: "https://peoplesure_testapp-lv1ws.test.p10.io"
 module.exports = {
   productsLimit: 3,
+  adminDataLimit: 5,
   siteURL: "http://localhost:8080",
   stripeConfig: {
     apiKey: "",

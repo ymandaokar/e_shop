@@ -2,6 +2,7 @@ import Reflux from "reflux";
 import createStore from "reflux-core/lib/createStore";
 import Immutable from "immutable";
 import Actions from "../actions/actions.js";
+import AuthActions from "../actions/authactions.js";
 import ObjectID from "bson-objectid";
 import { filter, omit } from "lodash-es";
 import axios from "axios";
@@ -47,10 +48,11 @@ function addSubCatagorisToCategories(categories, subCategories) {
   });
 }
 const AppStore = Reflux.createStore({
-  listenables: [Actions],
+  listenables: [Actions, AuthActions],
   _skip: 0,
   _limit: productsLimit,
   _key: "",
+  _currentProfile: null,
   _totalPages: Immutable.Map(),
   init: function() {
     this.state = Immutable.Map({
@@ -87,6 +89,10 @@ const AppStore = Reflux.createStore({
       userShipmentAddresses: [],
       shippingAddress: null
     });
+  },
+  userChanged: function(prevProfile, newProfile) {
+    this._currentProfile = newProfile;
+    this.triggerState();
   },
   validateEmail: function(mail) {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
