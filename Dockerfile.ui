@@ -12,6 +12,6 @@ COPY ["/packages/ui/generator.sh", "$app/conf.d/generator.sh"]
 
 RUN chmod +x $app/conf.d/generator.sh
 
-COPY ["/packages/ui/build/", "/var/www/sites/e_cart/"]
+COPY ["/packages/ui/build/", "/var/www/sites/tofa/"]
 
 ENTRYPOINT $app/conf.d/generator.sh
