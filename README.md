@@ -1,5 +1,5 @@
 
-# [Tofatofa](www.tofatofa.com)
+# [Tofatofa](http://www.tofatofa.com)
 
 * Install VS Code.
 * Install NodeJS with latest version.
