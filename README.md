@@ -10,7 +10,7 @@ Steps to start app.
 
 1.  Open project in VS Code.
 2.  Press `ctr+shift+c`. (It will open cmd prompt)
-3.  Write command **yarn install** and press Enter
+3.  Write command **yarn install** and press `Enter`
 4.  Go to **_packeges/api_** then write command **yarn start**
 5.  Press `ctr+shift+c` to open another cmd prompt.
 6.  Go to **_packeges/ui_** then write command **yarn start**
